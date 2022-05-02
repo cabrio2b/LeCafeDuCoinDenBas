@@ -6,7 +6,7 @@
 let divFormulaire = document.querySelector(".formulaire");
 let bouttonShowForm = document.querySelector(".ajouterProduits");
 let bouttonHideForm = document.querySelector(".xmark");
-alert("CASSE PAS MON TRUC!");
+
 let formulaire = document.querySelector("#form");
 
 let selectDrink = document.querySelector(".alcoolOuPas");
