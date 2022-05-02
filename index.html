@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <!-- entete head -->
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Le Café du coin d'en bas de la rue du bout de la ville d'en face du port -
+      Gestion du stock
+    </title>
+    <meta
+      name="description"
+      content="gestion du stock du Café du Coin d'en Bas de la Rue du Bout de la Ville d'en Face du Port"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script
+      data-search-pseudo-elements
+      src="https://kit.fontawesome.com/f737751420.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript" src="script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Container Entete -->
+    <header>
+      <div class="containerHeader">
+        <img class="logo" src="" />
+        <h1 class="titre">
+          Le Café du coin d'en bas de la rue du bout de la ville d'en face du
+          port
+        </h1>
+      </div>
+    </header>
+
+    <!-- Container affichage du stock -->
+    <section id="containerStock">
+      <h2 class="sousTitre">Gestoin des stocks</h2>
+      <div class="flex containerStock">
+        <div class="tableauStock">
+          <div class="label"><h4>Boisson fraiches</h4></div>
+          <div class="content">
+            <div id="tableau">
+              <div class="colonne entete flex">
+                <div class="cellule">Stock</div>
+                <div class="cellule">Designation</div>
+                <div class="cellule">Catégorie</div>
+                <div class="cellule">Ajout</div>
+                <div class="cellule">Supp.</div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">34</div>
+                <div class="cellule"><a href="#containerProduit">Coca-Cola</a></div>
+                <div class="cellule">Soda</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">50</div>
+                <div class="cellule"><a href="#containerProduit">Badoit</a></div>
+                <div class="cellule">Eau Gazeuse</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">24</div>
+                <div class="cellule"><a href="#containerProduit">Menthe à l'eau</a></div>
+                <div class="cellule">Sirop</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="label"><h4>Boissons Alcoolisées</h4></div>
+          <div class="content">
+            <div id="tableau">
+              <div class="colonne entete flex">
+                <div class="cellule">Stock</div>
+                <div class="cellule">Designation</div>
+                <div class="cellule">Catégorie</div>
+                <div class="cellule">Ajout</div>
+                <div class="cellule">Supp.</div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">4</div>
+                <div class="cellule"><a href="#containerProduit">Jack Daniel's</a></div>
+                <div class="cellule">Alcool Fort</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">48</div>
+                <div class="cellule"><a href="#containerProduit">Casanis</a></div>
+                <div class="cellule">Apéritif</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">12</div>
+                <div class="cellule"><a href="#containerProduit">Mojito</a></div>
+                <div class="cellule">Cocktail</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="label"><h4>Boissons Chaudes</h4></div>
+          <div class="content">
+            <div id="tableau">
+              <div class="colonne entete flex">
+                <div class="cellule">Stock</div>
+                <div class="cellule">Designation</div>
+                <div class="cellule">Catégorie</div>
+                <div class="cellule">Ajout</div>
+                <div class="cellule">Supp.</div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">142</div>
+                <div class="cellule"><a href="#containerProduit">Expresso</a></div>
+                <div class="cellule">Café</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">123</div>
+                <div class="cellule"><a href="#containerProduit">Capucino</a></div>
+                <div class="cellule">Café</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="colonne flex">
+                <div class="cellule">15</div>
+                <div class="cellule"><a href="#containerProduit">Thé à la menthe</a></div>
+                <div class="cellule">Thé</div>
+                <div class="cellule">
+                  <button id="boutonAjouter">
+                    <i class="fa-regular fa-circle-plus"></i>
+                  </button>
+                </div>
+                <div class="cellule">
+                  <button id="boutonSupprimer">
+                    <i class="fa-regular fa-circle-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alertStock">
+          <h4>Résumé de alertes</h4>
+          <div id="tableau">
+            <div class="colonne entete alerte">
+              <p>Boisson à commander</p>
+            </div>
+            <ul>
+              <li>Jack Daniel's</li>
+            </ul>
+          </div>
+          <div id="tableau">
+            <div class="colonne entete rupture">
+              <p>Boisson en rupture</p>
+            </div>
+            <ul>
+              <li>Infusion camomille</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Container fiche produit -->
+    <section id="containerProduit">
+      <h2 class="sousTitre">Gestion Boissons</h2>
+      <div class="flex containerBoisson">
+        <h1>coucou</h1>
+      </div>
+    </section>
+
+    <!-- Container Footer-->
+    <footer></footer>
+    <script>
+      let acc = document.getElementsByClassName("accordion");
+      let i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          let panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
