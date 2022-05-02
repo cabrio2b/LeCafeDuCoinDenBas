@@ -12,7 +12,7 @@ let formulaire = document.querySelector("#form");
 let selectDrink = document.querySelector(".alcoolOuPas");
 let inputAlcoolDegree = document.querySelector(".inputAlcoolDegree");
 
-let arrayStock;
+let arrayStock = [];
 
 let test = document.querySelector(".test");
 
@@ -77,8 +77,8 @@ function showStocks() {
   let content = "";
   arrayStock.forEach(function (element) {
     // Ajout à la variable content de mon élément
-    content += `<p>${element.nomProduit}---- ${element.quantiteProduit}---- ${element.prixProduitAchat} <br />  ${element.prixProduitVente} <br />
-         SINON ${element.type} <button class="deleteButton">Supprimer</button></p>`;
+    content += `<p>${element.nameGet}---- ${element.quantiteProduit}---- ${element.prixProduitAchat} <br />  ${element.prixProduitVente} <br />
+         SINON ${element.type} </p>`;
   });
   test.innerHTML = content;
 }
