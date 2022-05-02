@@ -50,7 +50,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">34</div>
-                <div class="cellule"><a href="#containerProduit">Coca-Cola</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Coca-Cola</a>
+                </div>
                 <div class="cellule">Soda</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -65,7 +67,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">50</div>
-                <div class="cellule"><a href="#containerProduit">Badoit</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Badoit</a>
+                </div>
                 <div class="cellule">Eau Gazeuse</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -80,7 +84,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">24</div>
-                <div class="cellule"><a href="#containerProduit">Menthe à l'eau</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Menthe à l'eau</a>
+                </div>
                 <div class="cellule">Sirop</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -108,7 +114,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">4</div>
-                <div class="cellule"><a href="#containerProduit">Jack Daniel's</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Jack Daniel's</a>
+                </div>
                 <div class="cellule">Alcool Fort</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -123,7 +131,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">48</div>
-                <div class="cellule"><a href="#containerProduit">Casanis</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Casanis</a>
+                </div>
                 <div class="cellule">Apéritif</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -138,7 +148,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">12</div>
-                <div class="cellule"><a href="#containerProduit">Mojito</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Mojito</a>
+                </div>
                 <div class="cellule">Cocktail</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -166,7 +178,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">142</div>
-                <div class="cellule"><a href="#containerProduit">Expresso</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Expresso</a>
+                </div>
                 <div class="cellule">Café</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -181,7 +195,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">123</div>
-                <div class="cellule"><a href="#containerProduit">Capucino</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Capucino</a>
+                </div>
                 <div class="cellule">Café</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -196,7 +212,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">15</div>
-                <div class="cellule"><a href="#containerProduit">Thé à la menthe</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Thé à la menthe</a>
+                </div>
                 <div class="cellule">Thé</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -235,11 +253,103 @@
       </div>
     </section>
 
+    <!-- ThomDev -->
     <!-- Container fiche produit -->
     <section id="containerProduit">
       <h2 class="sousTitre">Gestion Boissons</h2>
-      <div class="flex containerBoisson">
-        <h1>coucou</h1>
+      <div class="containerBoisson">
+        <div class="buttonGestion">
+          <button class="AddButton">Ajouter</button>
+          <button class="ModifButton">Modifier</button>
+          <button class="SupprButton">Supprimer</button>
+        </div>
+
+        <form id="form">
+          <!-- choix select type boisson-->
+          <div class="Select">
+            <label>Type de Boisson</label>
+            <select name="select" class="TypeBoisson">
+              <option value="BoissonS">Boisson soft</option>
+              <option value="BoissonA">Boisson Alcoolisées</option>
+              <option value="Autres">Autres</option>
+            </select>
+          </div>
+          <!-- formulaire produit -->
+          <div class="formBoisson">
+            <div class="GestionUn">
+              <label>Type de boisson :</label>
+              <input
+                class=""
+                type="text"
+                name="ChoixBoisson"
+                placeholder="Coca.."
+              />
+
+              <label>Prix d'achat HT:</label>
+              <input
+                class=""
+                type="text"
+                name="PrixAchatHT"
+                placeholder="Prix d'achat HT"
+              />
+
+              <label>Degré Alcool:</label>
+              <input
+                class=""
+                type="text"
+                name="DegréAlcool"
+                placeholder="Degré d'alcool"
+              />
+            </div>
+            <div class="GestionDeux">
+              <label>Catégorie de boisson:</label>
+              <input
+                class=""
+                type="text"
+                name="Type"
+                placeholder="Type de boisson"
+              />
+
+              <label>Prix de vente HT:</label>
+              <input
+                class=""
+                type="text"
+                name="PrixVenteHT"
+                placeholder="Prix de vente HT"
+              />
+
+              <label>Prix de vente TTC:</label>
+              <input
+                class=""
+                type="text"
+                name="PrixVenteTTC"
+                placeholder="Prix de vente TTC "
+              />
+            </div>
+            <div class="GestionTrois">
+              <label>Quantité :</label>
+              <input
+                class=""
+                type="text"
+                name="QuantitéProduits"
+                placeholder="Quantité de produits"
+              />
+
+              <label>Marge HT :</label>
+              <input
+                class=""
+                type="text"
+                name="MargeHT"
+                placeholder="Marge HT"
+              />
+              <!-- checkbox yes no -->
+              <label>Rupture de stock :</label>
+              <p class="onoff"><input type="checkbox" value="1" id="checkboxID"><label for="checkboxID"></label></p>
+            
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </section>
 
