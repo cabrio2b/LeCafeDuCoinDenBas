@@ -54,7 +54,7 @@ formulaire.addEventListener("submit", function (e) {
 
   // Création de l'objet stock
   let stockInformations = "";
-  if (selectDrink == "avec") {
+  if (selectDrink.value == "avec") {
     stockInformations = new Stockalcool(
       nameGet,
       quantityGet,
