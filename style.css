@@ -1,105 +1,16 @@
-/* ===== Général ===== */
 body {
   margin: 2% 5%;
   font-family: Roboto, "Segoe UI", Tahoma, sans-serif;
-  background-color: #ffffff;
-}
-h1,
-h2,
-h4,
-h6 {
-  text-shadow: 4px 4px 4px rgba(20, 19, 19, 0.726);
-}
-button {
-  border-radius: 5px;
-  background-color: rgb(100, 92, 81);
-  color: azure;
-}
-button:hover {
-  background-color: rgb(172, 158, 140);
+  background-color: #cfdddd;
 }
 
-/* ===== Les Sections ===== */
-
-.titre {
-  text-align: center;
-  margin-bottom: 0.5%;
-  background: -webkit-linear-gradient(
-    top,
-    rgb(255, 136, 0) 50%,
-    rgb(100, 92, 81) 70%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
-}
-.sousTitre {
-  text-align: end;
-  font-style: italic;
-  margin-top: 2%;
-  margin-bottom: 0.3%;
-  padding-right: 15px;
-  color: cornflowerblue;
-  -webkit-text-stroke: 1px black;
+/* cacher le formulaire */
+.formulaire {
+  /* visibility: hidden; a voir pour le faire avec un display none a la place */
+  display: none;
 }
 
-/* ===== Les Div's ===== */
-.flex {
+/* aligner les données du formulaire */
+.tabQuiAfficheForm {
   display: flex;
-}
-.containerStock {
-  gap: 2%;
-}
-.containerStock,
-.containerBoisson {
-  border: 2px solid rgb(255, 136, 0);
-  border-radius: 15px;
-  padding: 20px;
-  height: auto;
-}
-
-/* ===== Le tableau stock ===== */
-#tableau {
-  margin: 0 2%;
-}
-
-.tableauStock:nth-child(1) {
-  flex: 2;
-}
-.alertStock:nth-child(2) {
-  flex: 1;
-}
-.colonne {
-  gap: 20px;
-  justify-content: space-between;
-  padding: 5px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-.entete {
-  background-color: rgb(100, 92, 81);
-  font-weight: 600;
-  color: beige;
-}
-.cellule {
-  text-align: center;
-}
-.cellule:nth-child(2),
-.cellule:nth-child(3) {
-  flex: 1;
-}
-.cellule:nth-child(1),
-.cellule:nth-child(4),
-.cellule:nth-child(5) {
-  width: 50px;
-}
-.entete p {
-  margin: 0;
-}
-.alerte {
-  background-color: rgb(255, 153, 0);
-}
-.rupture {
-  background-color: rgb(255, 0, 0);
 }
