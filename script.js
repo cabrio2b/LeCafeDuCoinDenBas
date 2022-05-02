@@ -14,6 +14,7 @@ let inputAlcoolDegree = document.querySelector(".inputAlcoolDegree");
 
 let arrayStock = [];
 
+const conData = document.querySelector("#data");
 let test = document.querySelector(".test");
 
 // création fonction constru stock
@@ -79,14 +80,31 @@ formulaire.addEventListener("submit", function (e) {
 
 function showStocks(formData) {
   // Création de la fonction show contact avec la méthode forEach
-  // Création d'une variable content
-  let content = "";
+
+  //   creation d un tableau pour afficher les stocks avec for each
+  let tr = document.createElement("tr");
+
+  let tdNomProduit = document.createElement("td");
+  let tdQuantiteProduit = document.createElement("td");
+  let tdPrixProduitAchat = document.createElement("td");
+  let tdPrixProduitVente = document.createElement("td");
+  let tdDegreeAlcohol = document.createElement("td");
+
+  tr.appendChild(tdNomProduit);
+  tr.appendChild(tdQuantiteProduit);
+  tr.appendChild(tdPrixProduitAchat);
+  tr.appendChild(tdPrixProduitVente);
+  tr.appendChild(tdDegreeAlcohol);
+  conData.appendChild(tr);
+
   arrayStock.forEach(function (element) {
     // Ajout à la variable content de mon élément
-    content += `<p>${element.nomProduit}---- ${element.quantiteProduit}---- ${element.prixProduitAchat} <br />  ${element.prixProduitVente} <br />
-         SINON ${element.type} </p>`;
+    tdNomProduit.textContent = element.nomProduit;
+    tdQuantiteProduit.textContent = element.quantiteProduit;
+    tdPrixProduitAchat.textContent = element.prixProduitAchat;
+    tdPrixProduitVente.textContent = element.prixProduitVente;
+    tdDegreeAlcohol.textContent = element.degreeAlcohol;
   });
-  test.innerHTML = content;
 }
 
 // faire apparaitre le formulaire on click
