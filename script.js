@@ -18,23 +18,23 @@ let test = document.querySelector(".test");
 
 // création fonction constru stock
 class Stock {
-  constructor(nameGet, quantityGet, buyingPriceGet, sellingPriceGet) {
-    this.nomProduit = nameGet;
-    this.quantiteProduit = quantityGet;
-    this.prixProduitAchat = buyingPriceGet;
-    this.prixProduitVente = sellingPriceGet;
+  constructor(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente) {
+    this.nomProduit = nomProduit;
+    this.quantiteProduit = quantiteProduit;
+    this.prixProduitAchat = prixProduitAchat;
+    this.prixProduitVente = prixProduitVente;
   }
 }
 
 class Stockalcool extends Stock {
   constructor(
-    nameGet,
-    quantityGet,
-    buyingPriceGet,
-    sellingPriceGet,
+    nomProduit,
+    quantiteProduit,
+    prixProduitAchat,
+    prixProduitVente,
     degreeAlcohol
   ) {
-    super(nameGet, quantityGet, buyingPriceGet, sellingPriceGet);
+    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
     this.degreeAlcohol = degreeAlcohol;
     this.type = degreeAlcohol;
   }
@@ -63,21 +63,27 @@ formulaire.addEventListener("submit", function (e) {
       degreeAlcohol
     );
   } else {
+    stockInformations = new Stock(
+      nameGet,
+      quantityGet,
+      buyingPriceGet,
+      sellingPriceGet
+    );
   }
 
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
 
-  showStocks();
+  showStocks(formData);
 });
 
-function showStocks() {
+function showStocks(formData) {
   // Création de la fonction show contact avec la méthode forEach
   // Création d'une variable content
   let content = "";
   arrayStock.forEach(function (element) {
     // Ajout à la variable content de mon élément
-    content += `<p>${element.nameGet}---- ${element.quantiteProduit}---- ${element.prixProduitAchat} <br />  ${element.prixProduitVente} <br />
+    content += `<p>${element.nomProduit}---- ${element.quantiteProduit}---- ${element.prixProduitAchat} <br />  ${element.prixProduitVente} <br />
          SINON ${element.type} </p>`;
   });
   test.innerHTML = content;
