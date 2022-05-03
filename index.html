@@ -345,6 +345,7 @@
           <div class="selectBoisson">
             <label>Type de Boisson</label>
             <select name="type" id="type" class="" onchange="changementType();">
+              <option value="choixBase">Choisir une option</option>
               <option value="choixAlcool">Boisson Alcoolisées</option>
               <option value="choixChaud">Boisson Chaude</option>
               <option value="choixFroide">Boisson Froide</option>
@@ -377,37 +378,32 @@
               <div class="classBoisson">
                 <!-- INPUT NONE BOISSON ALCOOL  -->
                 <div id="alcool" style="display: none">
-                  <label>Degré Alcool:</label>
-                  <input
-                    class="inputChaud"
-                    type="text"
-                    name="degréAlcool"
-                    placeholder="Degré d'alcool"
-                    value=""
-                  />
+                  <label>Catégorie d'Alcool:</label>
+                  
+                  <select name="degréAlcool" class="">
+                    <option value="fort ">Fort</option>
+                    <option value="aperitif">Apéritif</option>
+                    <option value="cocktail">Cocktail</option>
+                  </select>
                 </div>
                 <!-- INPUT NONE BOISSON CHAUDE -->
                 <div id="chaud" style="display: none">
                   <label>Boisson chaude :</label>
-                  <input
-                    class="inputChaud"
-                    type="text"
-                    name="inputBchaud"
-                    placeholder="Boisson Chaude"
-                    value=""
-                  />
+                  <select name="inputFroid" class="">
+                    <option value="café">Café</option>
+                    <option value="thé">Thé</option>
+                    <option value="chocolat">Chocolat</option>
+                  </select>
                 </div>
 
                 <!-- INPUT NONE BOISSON FROIDE -->
                 <div id="froid" style="display: none">
                   <label>Boisson froide :</label>
-                  <input
-                    class="inputfroid"
-                    type="text"
-                    name="inputfroid"
-                    placeholder="Boisson Froide"
-                    value=""
-                  />
+                  <select name="inputFroid" class="">
+                    <option value="soda">Soda</option>
+                    <option value="eauGazeuse">Eau Gazeuse</option>
+                    <option value="sirop">Sirop</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -464,11 +460,13 @@
                   />
                 </div>
                 <!-- checkbox yes no -->
-                <label>Rupture de stock :</label>
-                <p class="onoff">
-                  <input type="checkbox" value="1" id="checkboxID" />
-                  <label for="checkboxID"></label>
-                </p>
+                <div class="ruptureB">
+                  <label>Rupture de stock :</label>
+                  <p class="onoff">
+                    <input type="checkbox" value="1" id="checkboxID" />
+                    <label for="checkboxID"></label>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
