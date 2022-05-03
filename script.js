@@ -24,7 +24,9 @@ const tabFroid = document.querySelector(".tabFroid");
 const tabAlcool = document.querySelector(".tabAlcool");
 const selectBoisson = document.querySelector(".test");
 
-let arrayStock = [];
+let arrayStock;
+
+recupTableauStock()
 
 const conData = document.querySelector("#data");
 let test = document.querySelector(".test");
@@ -49,7 +51,7 @@ class Stockalcool extends Stock {
   ) {
     super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
     this.degreeAlcohol = degreeAlcohol;
-    this.type = degreeAlcohol;
+    this.type = "categorieAlcool";
   }
 }
 
@@ -63,7 +65,7 @@ class StockChaud extends Stock {
   ) {
     super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
     this.categorieChaud = categorieChaud;
-    this.type = categorieChaud;
+    this.type = "categorieChaud";
   }
 }
 
@@ -80,22 +82,17 @@ class StockFroid extends Stock {
     this.type = "categorieFroid";
   }
 }
-// recuperation du localStorage
-recupTableauStock()
 
 // affichage des tableaux de stock
-afficheStockFroid()
-afficheStockChaud()
-afficheStockAlcool()
+afficheStockFroid();
+afficheStockChaud();
+afficheStockAlcool();
 
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
 formulaire.addEventListener("submit", function (e) {
   e.preventDefault();
 
   let formData = new FormData(formulaire);
-
-  console.log(selectBoisson.value);
-
   let nameGet = formData.get("choixBoisson");
   let quantityGet = formData.get("quantitéProduits");
   let prixAchatHTGet = formData.get("prixAchatHT");
@@ -103,8 +100,6 @@ formulaire.addEventListener("submit", function (e) {
   let degreeAlcoholGet = formData.get("degréAlcool");
   let choixBoissonChaudeGet = formData.get("inputChaud");
   let choixBoissonFroideGet = formData.get("inputFroid");
-
-  console.log(nameGet);
 
   // Création de l'objet stock
   let stockInformations;
@@ -220,9 +215,8 @@ function afficheStockFroid() {
   let ficheBoisson = "";
 
   arrayStock.forEach((element, index) => {
-
-    if (element.type = "categorieFroid") { 
-        // creer ma fiche a partir des elements du tableau
+    if ((element.type == "categorieFroid")) {
+      // creer ma fiche a partir des elements du tableau
       ficheBoisson += `
       <div class="colonne flex">
       <div class="cellule">${element.quantiteProduit}</div>
@@ -242,9 +236,9 @@ function afficheStockFroid() {
       </div>
     </div>
         `;
-        
-    } else { false }
-    
+    } else {
+      false;
+    }
   });
   tabFroid.innerHTML = ficheBoisson;
 }
@@ -254,9 +248,8 @@ function afficheStockChaud() {
   let ficheBoisson = "";
 
   arrayStock.forEach((element, index) => {
-
-    if (element.type = "categorieChaud") { 
-        // creer ma fiche a partir des elements du tableau
+    if ((element.type == "categorieChaud")) {
+      // creer ma fiche a partir des elements du tableau
       ficheBoisson += `
       <div class="colonne flex">
       <div class="cellule">${element.quantiteProduit}</div>
@@ -276,9 +269,9 @@ function afficheStockChaud() {
       </div>
     </div>
         `;
-        
-    } else { false }
-    
+    } else {
+      false;
+    }
   });
   tabChaud.innerHTML = ficheBoisson;
 }
@@ -288,9 +281,8 @@ function afficheStockAlcool() {
   let ficheBoisson = "";
 
   arrayStock.forEach((element, index) => {
-
-    if (element.type = "degreeAlcohol") { 
-        // creer ma fiche a partir des elements du tableau
+    if ((element.type == "categorieAlcool")) {
+      // creer ma fiche a partir des elements du tableau
       ficheBoisson += `
       <div class="colonne flex">
       <div class="cellule">${element.quantiteProduit}</div>
@@ -310,9 +302,9 @@ function afficheStockAlcool() {
       </div>
     </div>
         `;
-        
-    } else { false }
-    
+    } else {
+      false;
+    }
   });
   tabAlcool.innerHTML = ficheBoisson;
 }
