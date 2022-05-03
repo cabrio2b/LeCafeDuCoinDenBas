@@ -13,7 +13,7 @@ const optionFroid = document.querySelector("#froid");
 //
 
 let formulaire = document.querySelector("#form");
-let selectBoisson = document.querySelector(".typeBoisson");
+let chooseBoisson = document.querySelector(".typeBoisson");
 
 const addButton = document.querySelector(".addButton");
 const modifButton = document.querySelector(".modifButton");
@@ -22,6 +22,7 @@ const supprButton = document.querySelector(".supprButton");
 const tabChaud = document.querySelector(".tabChaud");
 const tabFroid = document.querySelector(".tabFroid");
 const tabAlcool = document.querySelector(".tabAlcool");
+const selectBoisson = document.querySelector(".test");
 
 let arrayStock = [];
 
@@ -79,82 +80,94 @@ class StockFroid extends Stock {
     this.type = categorieFroid;
   }
 }
-
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
-addButton.addEventListener("submit", function (e) {
+formulaire.addEventListener("submit", function (e) {
   e.preventDefault();
 
   let formData = new FormData(formulaire);
+
+  console.log(selectBoisson.value);
 
   let nameGet = formData.get("choixBoisson");
   let quantityGet = formData.get("quantitéProduits");
   let prixAchatHTGet = formData.get("prixAchatHT");
   let prixVenteHTGet = formData.get("prixVenteHT");
-  let degreeAlcohol = formData.get("degréAlcool");
+  let degreeAlcoholGet = formData.get("degréAlcool");
+  let choixBoissonChaudeGet = formData.get("inputChaud");
+  let choixBoissonFroideGet = formData.get("inputFroid");
+
+  console.log(nameGet);
 
   // Création de l'objet stock
-  let stockInformations = "";
-  if (selectDrink.value == "avec") {
+  let stockInformations;
+  if (selectBoisson.value == "choixAlcool") {
+    console.log("1");
     stockInformations = new Stockalcool(
       nameGet,
       quantityGet,
       prixAchatHTGet,
       prixVenteHTGet,
-      degreeAlcohol
+      degreeAlcoholGet
     );
-  } else {
-    stockInformations = new Stock(
+  } else if (selectBoisson.value == "choixChaud") {
+    console.log("2");
+    stockInformations = new StockChaud(
       nameGet,
       quantityGet,
       prixAchatHTGet,
-      prixVenteHTGet
+      prixVenteHTGet,
+      choixBoissonChaudeGet
     );
+  } else if (selectBoisson.value == "choixFroide") {
+    console.log("3");
+    stockInformations = new StockFroid(
+      nameGet,
+      quantityGet,
+      prixAchatHTGet,
+      prixVenteHTGet,
+      choixBoissonFroideGet
+    );
+  } else {
+    console.log("4");
   }
 
+  console.log(stockInformations);
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
+  console.log(arrayStock);
 
-  showStocks(formData);
+  // showStocks(formData);
+  saveTableauStock();
 });
 
-function showStocks(formData) {
-  // Création de la fonction show contact avec la méthode forEach
+// function showStocks(formData) {
+// Création de la fonction show contact avec la méthode forEach
 
-  //   creation d un tableau pour afficher les stocks avec for each
-  let tr = document.createElement("tr");
+//   creation d un tableau pour afficher les stocks avec for each
+// let tr = document.createElement("tr");
 
-  let tdNomProduit = document.createElement("td");
-  let tdQuantiteProduit = document.createElement("td");
-  let tdPrixProduitAchat = document.createElement("td");
-  let tdPrixProduitVente = document.createElement("td");
-  let tdDegreeAlcohol = document.createElement("td");
+// let tdNomProduit = document.createElement("td");
+// let tdQuantiteProduit = document.createElement("td");
+// let tdPrixProduitAchat = document.createElement("td");
+// let tdPrixProduitVente = document.createElement("td");
+// let tdDegreeAlcohol = document.createElement("td");
 
-  tr.appendChild(tdNomProduit);
-  tr.appendChild(tdQuantiteProduit);
-  tr.appendChild(tdPrixProduitAchat);
-  tr.appendChild(tdPrixProduitVente);
-  tr.appendChild(tdDegreeAlcohol);
-  conData.appendChild(tr);
+// tr.appendChild(tdNomProduit);
+// tr.appendChild(tdQuantiteProduit);
+// tr.appendChild(tdPrixProduitAchat);
+// tr.appendChild(tdPrixProduitVente);
+// tr.appendChild(tdDegreeAlcohol);
+// conData.appendChild(tr);
 
-  arrayStock.forEach(function (element) {
-    // Ajout à la variable content de mon élément
-    tdNomProduit.textContent = element.nomProduit;
-    tdQuantiteProduit.textContent = element.quantiteProduit;
-    tdPrixProduitAchat.textContent = element.prixProduitAchat;
-    tdPrixProduitVente.textContent = element.prixProduitVente;
-    tdDegreeAlcohol.textContent = element.degreeAlcohol;
-  });
-}
-
-// faire apparaitre le formulaire on click
-bouttonShowForm.addEventListener("click", function () {
-  divFormulaire.style.display = "block";
-});
-
-// faire disparaitre le formulaire avec le boutton xmark
-bouttonHideForm.addEventListener("click", function () {
-  divFormulaire.style.display = "none";
-});
+//   arrayStock.forEach(function (element) {
+//     // Ajout à la variable content de mon élément
+//     tdNomProduit.textContent = element.nomProduit;
+//     tdQuantiteProduit.textContent = element.quantiteProduit;
+//     tdPrixProduitAchat.textContent = element.prixProduitAchat;
+//     tdPrixProduitVente.textContent = element.prixProduitVente;
+//     tdDegreeAlcohol.textContent = element.degreeAlcohol;
+//   });
+// }
 
 //fonction stocker notre tableau contact dans le localStorage
 function saveTableauStock() {
@@ -219,7 +232,6 @@ function afficheStockFroid() {
     </div>
   </div>
       `;
-
-    
-  });infoBoisson.innerHTML = ficheBoisson;
+  });
+  infoBoisson.innerHTML = ficheBoisson;
 }
