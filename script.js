@@ -77,9 +77,17 @@ class StockFroid extends Stock {
   ) {
     super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
     this.categorieFroid = categorieFroid;
-    this.type = categorieFroid;
+    this.type = "categorieFroid";
   }
 }
+// recuperation du localStorage
+recupTableauStock()
+
+// affichage des tableaux de stock
+afficheStockFroid()
+afficheStockChaud()
+afficheStockAlcool()
+
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
 formulaire.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -212,26 +220,99 @@ function afficheStockFroid() {
   let ficheBoisson = "";
 
   arrayStock.forEach((element, index) => {
-    // creer ma fiche a partir des elements du tableau
-    ficheBoisson += `
-    <div class="colonne flex">
-    <div class="cellule">${element.quantiteProduit}</div>
-    <div class="cellule">
-      <a href="#containerProduit">${element.nomProduit}</a>
+
+    if (element.type = "categorieFroid") { 
+        // creer ma fiche a partir des elements du tableau
+      ficheBoisson += `
+      <div class="colonne flex">
+      <div class="cellule">${element.quantiteProduit}</div>
+      <div class="cellule">
+        <a href="#containerProduit">${element.nomProduit}</a>
+      </div>
+      <div class="cellule">${element.categorieFroid}</div>
+      <div class="cellule">
+        <button id="boutonAjouter">
+          <i class="fa-regular fa-circle-plus"></i>
+        </button>
+      </div>
+      <div class="cellule">
+        <button id="boutonSupprimer">
+          <i class="fa-regular fa-circle-minus"></i>
+        </button>
+      </div>
     </div>
-    <div class="cellule">${element.categorieFroid}</div>
-    <div class="cellule">
-      <button id="boutonAjouter">
-        <i class="fa-regular fa-circle-plus"></i>
-      </button>
-    </div>
-    <div class="cellule">
-      <button id="boutonSupprimer">
-        <i class="fa-regular fa-circle-minus"></i>
-      </button>
-    </div>
-  </div>
-      `;
+        `;
+        
+    } else { false }
+    
   });
-  infoBoisson.innerHTML = ficheBoisson;
+  tabFroid.innerHTML = ficheBoisson;
+}
+
+function afficheStockChaud() {
+  //Action de affiche Contact dans DIV .infoContact
+  let ficheBoisson = "";
+
+  arrayStock.forEach((element, index) => {
+
+    if (element.type = "categorieChaud") { 
+        // creer ma fiche a partir des elements du tableau
+      ficheBoisson += `
+      <div class="colonne flex">
+      <div class="cellule">${element.quantiteProduit}</div>
+      <div class="cellule">
+        <a href="#containerProduit">${element.nomProduit}</a>
+      </div>
+      <div class="cellule">${element.categorieChaud}</div>
+      <div class="cellule">
+        <button id="boutonAjouter">
+          <i class="fa-regular fa-circle-plus"></i>
+        </button>
+      </div>
+      <div class="cellule">
+        <button id="boutonSupprimer">
+          <i class="fa-regular fa-circle-minus"></i>
+        </button>
+      </div>
+    </div>
+        `;
+        
+    } else { false }
+    
+  });
+  tabChaud.innerHTML = ficheBoisson;
+}
+
+function afficheStockAlcool() {
+  //Action de affiche Contact dans DIV .infoContact
+  let ficheBoisson = "";
+
+  arrayStock.forEach((element, index) => {
+
+    if (element.type = "degreeAlcohol") { 
+        // creer ma fiche a partir des elements du tableau
+      ficheBoisson += `
+      <div class="colonne flex">
+      <div class="cellule">${element.quantiteProduit}</div>
+      <div class="cellule">
+        <a href="#containerProduit">${element.nomProduit}</a>
+      </div>
+      <div class="cellule">${element.degreeAlcohol}</div>
+      <div class="cellule">
+        <button id="boutonAjouter">
+          <i class="fa-regular fa-circle-plus"></i>
+        </button>
+      </div>
+      <div class="cellule">
+        <button id="boutonSupprimer">
+          <i class="fa-regular fa-circle-minus"></i>
+        </button>
+      </div>
+    </div>
+        `;
+        
+    } else { false }
+    
+  });
+  tabAlcool.innerHTML = ficheBoisson;
 }
