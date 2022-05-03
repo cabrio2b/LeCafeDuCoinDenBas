@@ -191,9 +191,8 @@
           <!-- button -->
         <div class="buttonGestion">
           <button type="submit" class="addButton">Ajouter</button>
-
           <button type="submit" class="modifButton">Modifier</button>
-          <button type="" class="supprButton">Supprimer</button>
+     <!-- <button type="" class="supprButton">Supprimer</button> -->
         </div>
           <div class="typeBoisson">
             <label>Selectionner une boisson :</label>
@@ -201,7 +200,7 @@
               class=""
               type="text"
               name="SelectionBoisson"
-              placeholder="Jack.."
+              placeholder="Nom de la Boisson"
             />
           </div>
 
@@ -225,7 +224,8 @@
                   class=""
                   type="text"
                   name="choixBoisson"
-                  placeholder="Coca.."
+                  placeholder="Nom de la Boisson"
+                  required
                 />
               </div>
 
@@ -243,9 +243,9 @@
                 <!-- INPUT NONE BOISSON ALCOOL  -->
                 <div id="alcool" style="display: none">
                   <label>Catégorie d'Alcool:</label>
-                  
-                  <select name="degréAlcool" class="">
-                    <option value="fort ">Fort</option>
+                  <select name="degréAlcool" class="" required>
+                    <option value="">Choisir une option</option>
+                    <option value="fort">Alcool Fort</option>
                     <option value="aperitif">Apéritif</option>
                     <option value="cocktail">Cocktail</option>
                   </select>
@@ -253,7 +253,8 @@
                 <!-- INPUT NONE BOISSON CHAUDE -->
                 <div id="chaud" style="display: none">
                   <label>Boisson chaude :</label>
-                  <select name="inputChaud" class="">
+                  <select name="inputChaud" class="" required>
+                    <option value="">Choisir une option</option>
                     <option value="café">Café</option>
                     <option value="thé">Thé</option>
                     <option value="chocolat">Chocolat</option>
@@ -263,7 +264,8 @@
                 <!-- INPUT NONE BOISSON FROIDE -->
                 <div id="froid" style="display: none">
                   <label>Boisson froide :</label>
-                  <select name="inputFroid" class="">
+                  <select name="inputFroid" class="" required>
+                    <option value="">Choisir une option</option>
                     <option value="soda">Soda</option>
                     <option value="eauGazeuse">Eau Gazeuse</option>
                     <option value="sirop">Sirop</option>
@@ -311,6 +313,7 @@
                     type="text"
                     name="quantitéProduits"
                     placeholder="Quantité de produits"
+                    required
                   />
                 </div>
 

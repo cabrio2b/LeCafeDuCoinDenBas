@@ -19,15 +19,17 @@ const addButton = document.querySelector(".addButton");
 const modifButton = document.querySelector(".modifButton");
 const supprButton = document.querySelector(".supprButton");
 
-const tabChaud = document.querySelector(".tabChaud");
-const tabFroid = document.querySelector(".tabFroid");
-const tabAlcool = document.querySelector(".tabAlcool");
+const tabChaud = document.querySelector(".tabChaud"); // div tableau B. Chaude
+const tabFroid = document.querySelector(".tabFroid"); // div tableau B. Froide
+const tabAlcool = document.querySelector(".tabAlcool"); // div tableau B. Alcool
 
-const boissonCommande = document.querySelector(".boissonCommande");
-const boissonRupture = document.querySelector(".boissonRupture");
-const suppBoisson = document.querySelector("#boutonSupprimerBoisson");
+const boissonCommande = document.querySelector(".boissonCommande"); // div à commander
+const boissonRupture = document.querySelector(".boissonRupture"); // div rupture
+const suppBoisson = document.querySelector("#boutonSupprimerBoisson"); // button sup boisson
+const boutonAjouter = document.querySelector("#boutonAjouter"); // button +1 => stock
+const boutonSupprimer = document.querySelector("#boutonSupprimer"); // button -1 => stock
 
-const selectBoisson = document.querySelector(".test");
+const selectBoisson = document.querySelector(".test"); // ???????
 
 let arrayStock;
 
@@ -35,59 +37,6 @@ recupTableauStock();
 
 const conData = document.querySelector("#data");
 let test = document.querySelector(".test");
-
-/**
- *
- * Creation des classes Stock
- *
- */
-class Stock {
-  constructor(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente) {
-    this.nomProduit = nomProduit;
-    this.quantiteProduit = quantiteProduit;
-    this.prixProduitAchat = prixProduitAchat;
-    this.prixProduitVente = prixProduitVente;
-  }
-}
-class Stockalcool extends Stock {
-  constructor(
-    nomProduit,
-    quantiteProduit,
-    prixProduitAchat,
-    prixProduitVente,
-    degreeAlcohol
-  ) {
-    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
-    this.degreeAlcohol = degreeAlcohol;
-    this.type = "categorieAlcool";
-  }
-}
-class StockChaud extends Stock {
-  constructor(
-    nomProduit,
-    quantiteProduit,
-    prixProduitAchat,
-    prixProduitVente,
-    categorieChaud
-  ) {
-    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
-    this.categorieChaud = categorieChaud;
-    this.type = "categorieChaud";
-  }
-}
-class StockFroid extends Stock {
-  constructor(
-    nomProduit,
-    quantiteProduit,
-    prixProduitAchat,
-    prixProduitVente,
-    categorieFroid
-  ) {
-    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
-    this.categorieFroid = categorieFroid;
-    this.type = "categorieFroid";
-  }
-}
 
 // affichage des tableaux de stock
 affichageStockComplet();
@@ -181,22 +130,21 @@ formulaire.addEventListener("submit", function (e) {
 //   });
 // }
 
-//BUTTON SUPRR SUR LA PARTIE LISTE BOISSON EN HAUT
-let deleteButtonArray = document.querySelector(".supprButton");
-
-deleteButtonArray.forEach(function (button, index) {
-  button.addEventListener("click", function () {
-    if (confirm("Voulez vous supprimer?")) {
-      // Supression de mon contact dans mon array
-      arrayStock.splice(index, 1);
-      // ResetItem notre localStorage
-      localStorage.setItem("listeStock", JSON.stringify(arrayContact));
-      // On relance l'affichage de notre tableau
-    } else {
-      false;
-    }
-  });
-});
+// //BUTTON SUPRR SUR LA PARTIE LISTE BOISSON EN HAUT
+// let deleteButtonArray = document.querySelector(".supprButton");
+// deleteButtonArray.forEach(function (button, index) {
+//   button.addEventListener("click", function () {
+//     if (confirm("Voulez vous supprimer?")) {
+//       // Supression de mon contact dans mon array
+//       arrayStock.splice(index, 1);
+//       // ResetItem notre localStorage
+//       localStorage.setItem("listeStock", JSON.stringify(arrayContact));
+//       // On relance l'affichage de notre tableau
+//     } else {
+//       false;
+//     }
+//   });
+// });
 
 /**
  *
@@ -401,4 +349,57 @@ function affichageStockComplet() {
   afficheStockAlcool();
   afficheStockAlerteCommander();
   afficheStockAlerteRupture();
+}
+
+/**
+ *
+ * Creation des classes Stock
+ *
+ */
+ class Stock {
+  constructor(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente) {
+    this.nomProduit = nomProduit;
+    this.quantiteProduit = quantiteProduit;
+    this.prixProduitAchat = prixProduitAchat;
+    this.prixProduitVente = prixProduitVente;
+  }
+}
+class Stockalcool extends Stock {
+  constructor(
+    nomProduit,
+    quantiteProduit,
+    prixProduitAchat,
+    prixProduitVente,
+    degreeAlcohol
+  ) {
+    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+    this.degreeAlcohol = degreeAlcohol;
+    this.type = "categorieAlcool";
+  }
+}
+class StockChaud extends Stock {
+  constructor(
+    nomProduit,
+    quantiteProduit,
+    prixProduitAchat,
+    prixProduitVente,
+    categorieChaud
+  ) {
+    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+    this.categorieChaud = categorieChaud;
+    this.type = "categorieChaud";
+  }
+}
+class StockFroid extends Stock {
+  constructor(
+    nomProduit,
+    quantiteProduit,
+    prixProduitAchat,
+    prixProduitVente,
+    categorieFroid
+  ) {
+    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+    this.categorieFroid = categorieFroid;
+    this.type = "categorieFroid";
+  }
 }
