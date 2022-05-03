@@ -50,7 +50,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">34</div>
-                <div class="cellule"><a href="#containerProduit">Coca-Cola</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Coca-Cola</a>
+                </div>
                 <div class="cellule">Soda</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -65,7 +67,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">50</div>
-                <div class="cellule"><a href="#containerProduit">Badoit</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Badoit</a>
+                </div>
                 <div class="cellule">Eau Gazeuse</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -80,7 +84,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">24</div>
-                <div class="cellule"><a href="#containerProduit">Menthe à l'eau</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Menthe à l'eau</a>
+                </div>
                 <div class="cellule">Sirop</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -108,7 +114,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">4</div>
-                <div class="cellule"><a href="#containerProduit">Jack Daniel's</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Jack Daniel's</a>
+                </div>
                 <div class="cellule">Alcool Fort</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -123,7 +131,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">48</div>
-                <div class="cellule"><a href="#containerProduit">Casanis</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Casanis</a>
+                </div>
                 <div class="cellule">Apéritif</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -138,7 +148,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">12</div>
-                <div class="cellule"><a href="#containerProduit">Mojito</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Mojito</a>
+                </div>
                 <div class="cellule">Cocktail</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -166,7 +178,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">142</div>
-                <div class="cellule"><a href="#containerProduit">Expresso</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Expresso</a>
+                </div>
                 <div class="cellule">Café</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -181,7 +195,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">123</div>
-                <div class="cellule"><a href="#containerProduit">Capucino</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Capucino</a>
+                </div>
                 <div class="cellule">Café</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -196,7 +212,9 @@
               </div>
               <div class="colonne flex">
                 <div class="cellule">15</div>
-                <div class="cellule"><a href="#containerProduit">Thé à la menthe</a></div>
+                <div class="cellule">
+                  <a href="#containerProduit">Thé à la menthe</a>
+                </div>
                 <div class="cellule">Thé</div>
                 <div class="cellule">
                   <button id="boutonAjouter">
@@ -239,27 +257,73 @@
     <section id="containerProduit">
       <h2 class="sousTitre">Gestion Boissons</h2>
       <div class="flex containerBoisson">
-        <h1>coucou</h1>
+        <!-- Container Pour Afficher Les 3 Bouttons -->
+        <div class="les3Bouttons">
+          <button class="ajouterProduits" type="submit">Nouveau Produit</button>
+          <button class="modifierProduits">Modifier</button>
+          <button class="supprimerProduits">Suppression</button>
+        </div>
+
+        <!-- Formulaire qui apparait quand on click sur Nouveaux Produits -->
+        <form id="form">
+          <div class="formulaire">
+            <select class="alcoolOuPas" name="select">
+              <option value="avec">Boissons avec alcool</option>
+              <option value="sans">Boissons sans alcool</option>
+              <option value="chaudes">Boissons chaudes</option>
+            </select>
+
+            <input type="text" name="name" placeholder="Nom du produit" />
+
+            <input type="text" name="quantity" placeholder="Quantités" />
+
+            <input
+              type="text"
+              name="buyingPrice"
+              placeholder="Prix d'achat HT"
+            />
+
+            <input
+              type="text"
+              name="sellingPrice"
+              placeholder="Prix de vente HT"
+            />
+
+            <input
+              class="inputAlcoolDegree"
+              type="text"
+              name="degreeAlcohol"
+              placeholder="Degré d'alcool"
+            />
+
+            <button type="submit">Ajouter au stock</button>
+            <button class="xmark" type="button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </form>
+
+        <!-- afficher les données du formulaire -->
+
+        <table>
+          <tr id="head">
+            <thead>
+              <th>| Produits |</th>
+              <th>Quantités |</th>
+              <th>Prix HT |</th>
+              <th>Prix de Vente HT |</th>
+              <th>Degré d'alcool |</th>
+              <th>Marge HT |</th>
+              <th>Prix de vente TTC |</th>
+            </thead>
+
+            <tbody id="data"></tbody>
+          </tr>
+        </table>
       </div>
     </section>
 
     <!-- Container Footer-->
     <footer></footer>
-    <script>
-      let acc = document.getElementsByClassName("accordion");
-      let i;
-
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          let panel = this.nextElementSibling;
-          if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-          } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-          }
-        });
-      }
-    </script>
   </body>
 </html>
