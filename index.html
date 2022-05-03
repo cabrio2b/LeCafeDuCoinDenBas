@@ -323,17 +323,17 @@
       <section id="containerProduit">
         <h2 class="sousTitre">Gestion Boissons</h2>
         <div class="containerBoisson">
-          
+        
+          <!-- button -->
         <div class="buttonGestion">
-          <button class="AddButton">Ajouter</button>
-          <button class="ModifButton">Modifier</button>
-          <button class="SupprButton">Supprimer</button>
+          <button type="submit" class="addButton">Ajouter</button>
+          <button type="submit" class="modifButton">Modifier</button>
+          <button type="submit" class="supprButton">Supprimer</button>
         </div>
 
+
+        <!-- choix select type boisson-->
         <form id="form">
-          <!-- choix select type boisson-->
-          <form id="form">
-            <!-- choix select type boisson-->
             <div class="typeBoisson">     
               <label>Selectionner une boisson :</label>
               <input
@@ -344,14 +344,7 @@
               />
             </div>
   
-            <!-- <div class="Select">
-              <label>Type de Boisson</label>
-              <select name="select" class="TypeBoisson">
-                <option value="BoissonS">Boisson soft</option>
-                <option value="BoissonA">Boisson Alcoolisées</option>
-                <option value="Autres">Autres</option>
-              </select>
-            </div> -->
+        
           <!-- formulaire produit -->
           <div class="formBoisson">
             <div class="GestionUn">
@@ -359,7 +352,7 @@
               <input
                 class=""
                 type="text"
-                name="ChoixBoisson"
+                name="choixBoisson"
                 placeholder="Coca.."
               />
 
@@ -367,7 +360,7 @@
               <input
                 class=""
                 type="text"
-                name="PrixAchatHT"
+                name="prixAchatHT"
                 placeholder="Prix d'achat HT"
               />
 
@@ -375,7 +368,7 @@
               <input
                 class=""
                 type="text"
-                name="DegréAlcool"
+                name="degréAlcool"
                 placeholder="Degré d'alcool"
               />
             </div>
@@ -392,7 +385,7 @@
               <input
                 class=""
                 type="text"
-                name="PrixVenteHT"
+                name="prixVenteHT"
                 placeholder="Prix de vente HT"
               />
 
@@ -409,7 +402,7 @@
               <input
                 class=""
                 type="text"
-                name="QuantitéProduits"
+                name="quantitéProduits"
                 placeholder="Quantité de produits"
               />
 

@@ -2,15 +2,12 @@
  * Récupérer les éléments du DOM / Création Variable
  */
 
-// SELECTEUR
-let divFormulaire = document.querySelector(".formulaire");
-let bouttonShowForm = document.querySelector(".ajouterProduits");
-let bouttonHideForm = document.querySelector(".xmark");
-
 let formulaire = document.querySelector("#form");
+let selectBoisson = document.querySelector(".typeBoisson");
 
-let selectDrink = document.querySelector(".alcoolOuPas");
-let inputAlcoolDegree = document.querySelector(".inputAlcoolDegree");
+const addButton = document.querySelector(".addButton");
+const modifButton = document.querySelector(".modifButton");
+const supprButton = document.querySelector(".supprButton");
 
 let arrayStock = [];
 
@@ -42,16 +39,16 @@ class Stockalcool extends Stock {
 }
 
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
-formulaire.addEventListener("submit", function (e) {
+addButton.addEventListener("submit", function (e) {
   e.preventDefault();
 
   let formData = new FormData(formulaire);
 
-  let nameGet = formData.get("name");
-  let quantityGet = formData.get("quantity");
-  let buyingPriceGet = formData.get("buyingPrice");
-  let sellingPriceGet = formData.get("sellingPrice");
-  let degreeAlcohol = formData.get("degreeAlcohol");
+  let nameGet = formData.get("choixBoisson");
+  let quantityGet = formData.get("quantitéProduits");
+  let prixAchatHTGet = formData.get("prixAchatHT");
+  let prixVenteHTGet = formData.get("prixVenteHT");
+  let degreeAlcohol = formData.get("degréAlcool");
 
   // Création de l'objet stock
   let stockInformations = "";
@@ -59,16 +56,16 @@ formulaire.addEventListener("submit", function (e) {
     stockInformations = new Stockalcool(
       nameGet,
       quantityGet,
-      buyingPriceGet,
-      sellingPriceGet,
+      prixAchatHTGet,
+      prixVenteHTGet,
       degreeAlcohol
     );
   } else {
     stockInformations = new Stock(
       nameGet,
       quantityGet,
-      buyingPriceGet,
-      sellingPriceGet
+      prixAchatHTGet,
+      prixVenteHTGet
     );
   }
 
