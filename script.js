@@ -38,6 +38,35 @@ class Stockalcool extends Stock {
   }
 }
 
+class StockChaud extends Stock {
+    constructor(
+      nomProduit,
+      quantiteProduit,
+      prixProduitAchat,
+      prixProduitVente,
+      categorieChaud
+    ) {
+      super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+      this.categorieChaud = categorieChaud;
+      this.type = categorieChaud;
+    }
+  }
+
+  class StockFroid extends Stock {
+    constructor(
+      nomProduit,
+      quantiteProduit,
+      prixProduitAchat,
+      prixProduitVente,
+      categorieFroid
+    ) {
+      super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+      this.categorieFroid = categorieFroid;
+      this.type = categorieFroid;
+    }
+  }
+  
+
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
 addButton.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -125,3 +154,22 @@ selectDrink.addEventListener("change", function () {
   } else {
   }
 });
+
+//fonction stocker notre tableau contact dans le localStorage
+function saveTableauStock() {
+  const JsontabStock = JSON.stringify(arrayStock); //tab => json
+  localStorage.setItem("listeStock", JsontabStock); //envoy tab
+}
+
+//fonction recup de mon tableau du local storage
+function recupTableauContact() {
+  // RECUPERATION LOCAL STORAGE DANS VARIABLE
+  let JsontabStock = JSON.parse(localStorage.getItem("listeStock")); // recup json => tab
+  if (JsontabStock != "") {
+    // arrayStock est egal au contenu du local
+    arrayStock = JsontabStock;
+    showStocks();
+  } else {
+    false;
+  }
+}
