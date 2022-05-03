@@ -41,6 +41,35 @@ class Stockalcool extends Stock {
   }
 }
 
+class StockChaud extends Stock {
+    constructor(
+      nomProduit,
+      quantiteProduit,
+      prixProduitAchat,
+      prixProduitVente,
+      categorieChaud
+    ) {
+      super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+      this.categorieChaud = categorieChaud;
+      this.type = categorieChaud;
+    }
+  }
+
+  class StockFroid extends Stock {
+    constructor(
+      nomProduit,
+      quantiteProduit,
+      prixProduitAchat,
+      prixProduitVente,
+      categorieFroid
+    ) {
+      super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+      this.categorieFroid = categorieFroid;
+      this.type = categorieFroid;
+    }
+  }
+  
+
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
 formulaire.addEventListener("submit", function (e) {
   e.preventDefault();
