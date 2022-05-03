@@ -19,6 +19,10 @@ const addButton = document.querySelector(".addButton");
 const modifButton = document.querySelector(".modifButton");
 const supprButton = document.querySelector(".supprButton");
 
+const tabChaud = document.querySelector(".tabChaud");
+const tabFroid = document.querySelector(".tabFroid");
+const tabAlcool = document.querySelector(".tabAlcool");
+
 let arrayStock = [];
 
 const conData = document.querySelector("#data");
@@ -159,13 +163,12 @@ function saveTableauStock() {
 }
 
 //fonction recup de mon tableau du local storage
-function recupTableauContact() {
+function recupTableauStock() {
   // RECUPERATION LOCAL STORAGE DANS VARIABLE
   let JsontabStock = JSON.parse(localStorage.getItem("listeStock")); // recup json => tab
   if (JsontabStock != "") {
     // arrayStock est egal au contenu du local
     arrayStock = JsontabStock;
-    showStocks();
   } else {
     false;
   }
@@ -189,4 +192,34 @@ function changementType() {
     optionChaud.style.display = "none";
     optionAlcool.style.display = "none";
   }
+}
+
+function afficheStockFroid() {
+  //Action de affiche Contact dans DIV .infoContact
+  let ficheBoisson = "";
+
+  arrayStock.forEach((element, index) => {
+    // creer ma fiche a partir des elements du tableau
+    ficheBoisson += `
+    <div class="colonne flex">
+    <div class="cellule">${element.quantiteProduit}</div>
+    <div class="cellule">
+      <a href="#containerProduit">${element.nomProduit}</a>
+    </div>
+    <div class="cellule">${element.categorieFroid}</div>
+    <div class="cellule">
+      <button id="boutonAjouter">
+        <i class="fa-regular fa-circle-plus"></i>
+      </button>
+    </div>
+    <div class="cellule">
+      <button id="boutonSupprimer">
+        <i class="fa-regular fa-circle-minus"></i>
+      </button>
+    </div>
+  </div>
+      `;
+
+    
+  });infoBoisson.innerHTML = ficheBoisson;
 }
