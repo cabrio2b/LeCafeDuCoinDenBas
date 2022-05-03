@@ -13,11 +13,13 @@ const optionFroid = document.querySelector("#froid");
 //
 
 let formulaire = document.querySelector("#form");
-let selectBoisson = document.querySelector(".typeBoisson");
+let chooseBoisson = document.querySelector(".typeBoisson");
 
 const addButton = document.querySelector(".addButton");
 const modifButton = document.querySelector(".modifButton");
 const supprButton = document.querySelector(".supprButton");
+
+const selectBoisson = document.querySelector(".selectBoisson");
 
 let arrayStock = [];
 
@@ -75,9 +77,9 @@ class StockFroid extends Stock {
     this.type = categorieFroid;
   }
 }
-
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
-addButton.addEventListener("submit", function (e) {
+formulaire.addEventListener("submit", function (e) {
+  alert("hello");
   e.preventDefault();
 
   let formData = new FormData(formulaire);
@@ -86,26 +88,42 @@ addButton.addEventListener("submit", function (e) {
   let quantityGet = formData.get("quantitéProduits");
   let prixAchatHTGet = formData.get("prixAchatHT");
   let prixVenteHTGet = formData.get("prixVenteHT");
-  let degreeAlcohol = formData.get("degréAlcool");
+  let degreeAlcoholGet = formData.get("degréAlcool");
+  let choixBoissonChaudeGet = formData.get("inputChaud");
+  let choixBoissonFroideGet = formData.get("inputFroid");
+
+  console.log(quantityGet);
 
   // Création de l'objet stock
   let stockInformations = "";
-  if (selectDrink.value == "avec") {
+  if (selectBoisson.value == "choixAlcool") {
     stockInformations = new Stockalcool(
       nameGet,
       quantityGet,
       prixAchatHTGet,
       prixVenteHTGet,
-      degreeAlcohol
+      degreeAlcoholGet
     );
-  } else {
-    stockInformations = new Stock(
+  } else if (selectBoisson.value == "choixChaud") {
+    stockInformations = new StockChaud(
       nameGet,
       quantityGet,
       prixAchatHTGet,
-      prixVenteHTGet
+      prixVenteHTGet,
+      choixBoissonChaudeGet
     );
+  } else if (selectBoisson.value == "choixFroid") {
+    stockInformations = new StockFroid(
+      nameGet,
+      quantityGet,
+      prixAchatHTGet,
+      prixVenteHTGet,
+      choixBoissonFroideGet
+    );
+  } else {
   }
+
+  console.log(quantityGet);
 
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
@@ -141,16 +159,6 @@ function showStocks(formData) {
     tdDegreeAlcohol.textContent = element.degreeAlcohol;
   });
 }
-
-// faire apparaitre le formulaire on click
-bouttonShowForm.addEventListener("click", function () {
-  divFormulaire.style.display = "block";
-});
-
-// faire disparaitre le formulaire avec le boutton xmark
-bouttonHideForm.addEventListener("click", function () {
-  divFormulaire.style.display = "none";
-});
 
 //fonction stocker notre tableau contact dans le localStorage
 function saveTableauStock() {
