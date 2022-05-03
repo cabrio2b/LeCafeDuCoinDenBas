@@ -92,7 +92,7 @@ formulaire.addEventListener("submit", function (e) {
   let choixBoissonChaudeGet = formData.get("inputChaud");
   let choixBoissonFroideGet = formData.get("inputFroid");
 
-  console.log(quantityGet);
+  console.log(nameGet);
 
   // Création de l'objet stock
   let stockInformations = "";
@@ -112,7 +112,7 @@ formulaire.addEventListener("submit", function (e) {
       prixVenteHTGet,
       choixBoissonChaudeGet
     );
-  } else if (selectBoisson.value == "choixFroid") {
+  } else if (selectBoisson.value == "choixFroide") {
     stockInformations = new StockFroid(
       nameGet,
       quantityGet,
@@ -123,42 +123,42 @@ formulaire.addEventListener("submit", function (e) {
   } else {
   }
 
-  console.log(quantityGet);
-
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
+  console.log(arrayStock);
 
-  showStocks(formData);
+  // showStocks(formData);
+  saveTableauStock();
 });
 
-function showStocks(formData) {
-  // Création de la fonction show contact avec la méthode forEach
+// function showStocks(formData) {
+// Création de la fonction show contact avec la méthode forEach
 
-  //   creation d un tableau pour afficher les stocks avec for each
-  let tr = document.createElement("tr");
+//   creation d un tableau pour afficher les stocks avec for each
+// let tr = document.createElement("tr");
 
-  let tdNomProduit = document.createElement("td");
-  let tdQuantiteProduit = document.createElement("td");
-  let tdPrixProduitAchat = document.createElement("td");
-  let tdPrixProduitVente = document.createElement("td");
-  let tdDegreeAlcohol = document.createElement("td");
+// let tdNomProduit = document.createElement("td");
+// let tdQuantiteProduit = document.createElement("td");
+// let tdPrixProduitAchat = document.createElement("td");
+// let tdPrixProduitVente = document.createElement("td");
+// let tdDegreeAlcohol = document.createElement("td");
 
-  tr.appendChild(tdNomProduit);
-  tr.appendChild(tdQuantiteProduit);
-  tr.appendChild(tdPrixProduitAchat);
-  tr.appendChild(tdPrixProduitVente);
-  tr.appendChild(tdDegreeAlcohol);
-  conData.appendChild(tr);
+// tr.appendChild(tdNomProduit);
+// tr.appendChild(tdQuantiteProduit);
+// tr.appendChild(tdPrixProduitAchat);
+// tr.appendChild(tdPrixProduitVente);
+// tr.appendChild(tdDegreeAlcohol);
+// conData.appendChild(tr);
 
-  arrayStock.forEach(function (element) {
-    // Ajout à la variable content de mon élément
-    tdNomProduit.textContent = element.nomProduit;
-    tdQuantiteProduit.textContent = element.quantiteProduit;
-    tdPrixProduitAchat.textContent = element.prixProduitAchat;
-    tdPrixProduitVente.textContent = element.prixProduitVente;
-    tdDegreeAlcohol.textContent = element.degreeAlcohol;
-  });
-}
+//   arrayStock.forEach(function (element) {
+//     // Ajout à la variable content de mon élément
+//     tdNomProduit.textContent = element.nomProduit;
+//     tdQuantiteProduit.textContent = element.quantiteProduit;
+//     tdPrixProduitAchat.textContent = element.prixProduitAchat;
+//     tdPrixProduitVente.textContent = element.prixProduitVente;
+//     tdDegreeAlcohol.textContent = element.degreeAlcohol;
+//   });
+// }
 
 //fonction stocker notre tableau contact dans le localStorage
 function saveTableauStock() {
