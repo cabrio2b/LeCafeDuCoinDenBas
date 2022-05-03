@@ -1,6 +1,16 @@
 /**
  * Récupérer les éléments du DOM / Création Variable
  */
+// selecteur choix
+const option = document.querySelector(".option");
+const choixAlcool = document.querySelector(".choixAlcool");
+const choixChaud = document.querySelector(".choixChaud");
+const choixFroide = document.querySelector(".choixFroide");
+
+const optionAlcool = document.querySelector("#alcool");
+const optionChaud = document.querySelector("#chaud");
+const optionFroid = document.querySelector("#froid");
+//
 
 let formulaire = document.querySelector("#form");
 let selectBoisson = document.querySelector(".typeBoisson");
@@ -39,33 +49,32 @@ class Stockalcool extends Stock {
 }
 
 class StockChaud extends Stock {
-    constructor(
-      nomProduit,
-      quantiteProduit,
-      prixProduitAchat,
-      prixProduitVente,
-      categorieChaud
-    ) {
-      super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
-      this.categorieChaud = categorieChaud;
-      this.type = categorieChaud;
-    }
+  constructor(
+    nomProduit,
+    quantiteProduit,
+    prixProduitAchat,
+    prixProduitVente,
+    categorieChaud
+  ) {
+    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+    this.categorieChaud = categorieChaud;
+    this.type = categorieChaud;
   }
+}
 
-  class StockFroid extends Stock {
-    constructor(
-      nomProduit,
-      quantiteProduit,
-      prixProduitAchat,
-      prixProduitVente,
-      categorieFroid
-    ) {
-      super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
-      this.categorieFroid = categorieFroid;
-      this.type = categorieFroid;
-    }
+class StockFroid extends Stock {
+  constructor(
+    nomProduit,
+    quantiteProduit,
+    prixProduitAchat,
+    prixProduitVente,
+    categorieFroid
+  ) {
+    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+    this.categorieFroid = categorieFroid;
+    this.type = categorieFroid;
   }
-  
+}
 
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
 addButton.addEventListener("submit", function (e) {
@@ -143,18 +152,6 @@ bouttonHideForm.addEventListener("click", function () {
   divFormulaire.style.display = "none";
 });
 
-// bouton select fait apparaitre degree d'alcool ou pas
-selectDrink.addEventListener("change", function () {
-  if (selectDrink.value == "avec") {
-    inputAlcoolDegree.style.display = "";
-  } else if (selectDrink.value == "sans") {
-    inputAlcoolDegree.style.display = "none";
-  } else if (selectDrink.value == "chaudes") {
-    inputAlcoolDegree.style.display = "none";
-  } else {
-  }
-});
-
 //fonction stocker notre tableau contact dans le localStorage
 function saveTableauStock() {
   const JsontabStock = JSON.stringify(arrayStock); //tab => json
@@ -171,5 +168,25 @@ function recupTableauContact() {
     showStocks();
   } else {
     false;
+  }
+}
+
+// selecteur choix CHAUD FROID
+function changementType() {
+  let type = document.getElementById("type").value;
+
+  //pour selecteur Perso
+  if (type == "choixAlcool") {
+    optionAlcool.style = "display:block";
+    optionChaud.style.display = "none";
+    optionFroid.style.display = "none";
+  } else if (type == "choixChaud") {
+    optionChaud.style = "display:block";
+    optionAlcool.style.display = "none";
+    optionFroid.style.display = "none";
+  } else {
+    optionFroid.style = "display:block";
+    optionChaud.style.display = "none";
+    optionAlcool.style.display = "none";
   }
 }
