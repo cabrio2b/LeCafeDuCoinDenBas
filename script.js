@@ -128,3 +128,22 @@ selectDrink.addEventListener("change", function () {
   } else {
   }
 });
+
+//fonction stocker notre tableau contact dans le localStorage
+function saveTableauStock() {
+  const JsontabStock = JSON.stringify(arrayStock); //tab => json
+  localStorage.setItem("listeStock", JsontabStock); //envoy tab
+}
+
+//fonction recup de mon tableau du local storage
+function recupTableauContact() {
+  // RECUPERATION LOCAL STORAGE DANS VARIABLE
+  let JsontabStock = JSON.parse(localStorage.getItem("listeStock")); // recup json => tab
+  if (JsontabStock != "") {
+    // arrayStock est egal au contenu du local
+    arrayStock = JsontabStock;
+    showStocks();
+  } else {
+    false;
+  }
+}
