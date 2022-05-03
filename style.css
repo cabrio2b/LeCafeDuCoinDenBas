@@ -103,6 +103,12 @@ button:hover {
 .rupture {
   background-color: rgb(255, 0, 0);
 }
+.boissonRupture {
+  justify-content: space-between;
+}
+.alerteTexte {
+  color: #f32727;
+}
 
 /** ThomDev **/
 

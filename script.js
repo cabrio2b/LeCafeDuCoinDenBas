@@ -22,6 +22,9 @@ const supprButton = document.querySelector(".supprButton");
 const tabChaud = document.querySelector(".tabChaud");
 const tabFroid = document.querySelector(".tabFroid");
 const tabAlcool = document.querySelector(".tabAlcool");
+
+const boissonCommande = document.querySelector(".boissonCommande");
+
 const selectBoisson = document.querySelector(".test");
 
 let arrayStock;
@@ -87,6 +90,7 @@ class StockFroid extends Stock {
 afficheStockFroid();
 afficheStockChaud();
 afficheStockAlcool();
+afficheStockAlerteCommander();
 
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
 formulaire.addEventListener("submit", function (e) {
@@ -210,6 +214,7 @@ function changementType() {
   }
 }
 
+// Fonction Affichage Stock Boisson Froide
 function afficheStockFroid() {
   //Action de affiche Contact dans DIV .infoContact
   let ficheBoisson = "";
@@ -242,7 +247,7 @@ function afficheStockFroid() {
   });
   tabFroid.innerHTML = ficheBoisson;
 }
-
+// Fonction Affichage Stock Boisson Chaude
 function afficheStockChaud() {
   //Action de affiche Contact dans DIV .infoContact
   let ficheBoisson = "";
@@ -275,7 +280,7 @@ function afficheStockChaud() {
   });
   tabChaud.innerHTML = ficheBoisson;
 }
-
+// Fonction Affichage Stock Boisson alcoolisée
 function afficheStockAlcool() {
   //Action de affiche Contact dans DIV .infoContact
   let ficheBoisson = "";
@@ -307,6 +312,23 @@ function afficheStockAlcool() {
     }
   });
   tabAlcool.innerHTML = ficheBoisson;
+}
+// Fonction Affichage Stock Boisson alcoolisée
+function afficheStockAlerteCommander() {
+  //Action de affiche Contact dans DIV .infoContact
+  let ficheBoisson = "";
+
+  arrayStock.forEach((element, index) => {
+    if ((element.quantiteProduit <= 5)) {
+      // creer ma fiche a partir des elements du tableau
+      ficheBoisson += `
+      <li>${element.nomProduit} <span class="alerteTexte">(reste ${element.quantiteProduit} en stock)</span></li>
+        `;
+    } else {
+      false;
+    }
+  });
+  boissonCommande.innerHTML = ficheBoisson;
 }
 
 //BUTTON SUPRR SUR LA PARTIE LISTE BOISSON EN HAUT
