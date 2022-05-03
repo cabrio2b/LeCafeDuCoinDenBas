@@ -105,9 +105,19 @@ button:hover {
 }
 .boissonRupture {
   justify-content: space-between;
+  flex-wrap:wrap;
+  gap: 5px 0
+}
+.boissonRupture li{
+  flex: 1 0 60%;
+  
 }
 .alerteTexte {
   color: #f32727;
+  font-style: italic;
+}
+.boissonCommande {
+  margin-bottom: 8%;
 }
 
 /** ThomDev **/
