@@ -19,7 +19,7 @@ const addButton = document.querySelector(".addButton");
 const modifButton = document.querySelector(".modifButton");
 const supprButton = document.querySelector(".supprButton");
 
-const selectBoisson = document.querySelector(".selectBoisson");
+const selectBoisson = document.querySelector(".test");
 
 let arrayStock = [];
 
@@ -79,10 +79,11 @@ class StockFroid extends Stock {
 }
 // Récupération des données du formulaire avec le boutton "ajouter au stock"
 formulaire.addEventListener("submit", function (e) {
-  alert("hello");
   e.preventDefault();
 
   let formData = new FormData(formulaire);
+
+  console.log(selectBoisson.value);
 
   let nameGet = formData.get("choixBoisson");
   let quantityGet = formData.get("quantitéProduits");
@@ -95,8 +96,9 @@ formulaire.addEventListener("submit", function (e) {
   console.log(nameGet);
 
   // Création de l'objet stock
-  let stockInformations = "";
+  let stockInformations;
   if (selectBoisson.value == "choixAlcool") {
+    console.log("1");
     stockInformations = new Stockalcool(
       nameGet,
       quantityGet,
@@ -105,6 +107,7 @@ formulaire.addEventListener("submit", function (e) {
       degreeAlcoholGet
     );
   } else if (selectBoisson.value == "choixChaud") {
+    console.log("2");
     stockInformations = new StockChaud(
       nameGet,
       quantityGet,
@@ -113,6 +116,7 @@ formulaire.addEventListener("submit", function (e) {
       choixBoissonChaudeGet
     );
   } else if (selectBoisson.value == "choixFroide") {
+    console.log("3");
     stockInformations = new StockFroid(
       nameGet,
       quantityGet,
@@ -121,8 +125,10 @@ formulaire.addEventListener("submit", function (e) {
       choixBoissonFroideGet
     );
   } else {
+    console.log("4");
   }
 
+  console.log(stockInformations);
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
   console.log(arrayStock);
