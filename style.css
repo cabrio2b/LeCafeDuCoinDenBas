@@ -112,7 +112,7 @@ button:hover {
   margin-left: 1%;
 }
 
-.Select {
+.typeBoisson {
   margin-top: 1%;
   margin-left: 1%;
 }
@@ -123,7 +123,7 @@ button:hover {
   height: 250px;
   align-items: flex-start;
   white-space: pre;
-  margin-left: 17%;
+  margin-left: 23%;
 }
 
 /** CHECKBOX RED BLUE POUR RUPTURE STOCK **/
