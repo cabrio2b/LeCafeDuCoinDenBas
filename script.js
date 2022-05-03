@@ -308,3 +308,20 @@ function afficheStockAlcool() {
   });
   tabAlcool.innerHTML = ficheBoisson;
 }
+
+//BUTTON SUPRR SUR LA PARTIE LISTE BOISSON EN HAUT
+let deleteButtonArray = document.querySelector(".supprButton");
+
+deleteButtonArray.forEach(function (button, index) {
+  button.addEventListener("click", function () {
+    if (confirm("Voulez vous supprimer?")) {
+      // Supression de mon contact dans mon array
+      arrayStock.splice(index, 1);
+      // ResetItem notre localStorage
+      localStorage.setItem("listeStock", JSON.stringify(arrayContact));
+      // On relance l'affichage de notre tableau
+    } else {
+      false;
+    }
+  });
+});
