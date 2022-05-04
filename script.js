@@ -29,6 +29,11 @@ const suppBoisson = document.querySelector("#boutonSupprimerBoisson"); // button
 const boutonAjouter = document.querySelector("#boutonAjouter"); // button +1 => stock
 const boutonSupprimer = document.querySelector("#boutonSupprimer"); // button -1 => stock
 
+// require sur les types de boisson
+const selectdegreAlcool = document.querySelector('select[name="degréAlcool"]');
+const selectInputChaud = document.querySelector('select[name="inputChaud"]');
+const selectInputFroid = document.querySelector('select[name="inputFroid"]'); 
+
 const selectBoisson = document.querySelector(".test"); // ???????
 
 let arrayStock;
@@ -174,14 +179,21 @@ function changementType() {
   //pour selecteur Perso
   if (type == "choixAlcool") {
     optionAlcool.style = "display:block";
+    selectdegreAlcool.setAttribute('required', true);
+    // selectInputChaud.setAttribute('required',false);
+    // selectInputFroid.setAttribute('required',false);
     optionChaud.style.display = "none";
     optionFroid.style.display = "none";
   } else if (type == "choixChaud") {
     optionChaud.style = "display:block";
+    selectInputChaud.setAttribute('required',true);
+    // selectdegreAlcool.setAttribute('required', false);
+    // selectInputFroid.setAttribute('required',false);
     optionAlcool.style.display = "none";
     optionFroid.style.display = "none";
   } else {
     optionFroid.style = "display:block";
+    selectInputFroid.setAttribute('required',true);
     optionChaud.style.display = "none";
     optionAlcool.style.display = "none";
   }
