@@ -106,51 +106,6 @@ formulaire.addEventListener("submit", function (e) {
   document.location.reload();
 });
 
-// function showStocks(formData) {
-// Création de la fonction show contact avec la méthode forEach
-
-//   creation d un tableau pour afficher les stocks avec for each
-// let tr = document.createElement("tr");
-
-// let tdNomProduit = document.createElement("td");
-// let tdQuantiteProduit = document.createElement("td");
-// let tdPrixProduitAchat = document.createElement("td");
-// let tdPrixProduitVente = document.createElement("td");
-// let tdDegreeAlcohol = document.createElement("td");
-
-// tr.appendChild(tdNomProduit);
-// tr.appendChild(tdQuantiteProduit);
-// tr.appendChild(tdPrixProduitAchat);
-// tr.appendChild(tdPrixProduitVente);
-// tr.appendChild(tdDegreeAlcohol);
-// conData.appendChild(tr);
-
-//   arrayStock.forEach(function (element) {
-//     // Ajout à la variable content de mon élément
-//     tdNomProduit.textContent = element.nomProduit;
-//     tdQuantiteProduit.textContent = element.quantiteProduit;
-//     tdPrixProduitAchat.textContent = element.prixProduitAchat;
-//     tdPrixProduitVente.textContent = element.prixProduitVente;
-//     tdDegreeAlcohol.textContent = element.degreeAlcohol;
-//   });
-// }
-
-// //BUTTON SUPRR SUR LA PARTIE LISTE BOISSON EN HAUT
-// let deleteButtonArray = document.querySelector(".supprButton");
-// deleteButtonArray.forEach(function (button, index) {
-//   button.addEventListener("click", function () {
-//     if (confirm("Voulez vous supprimer?")) {
-//       // Supression de mon contact dans mon array
-//       arrayStock.splice(index, 1);
-//       // ResetItem notre localStorage
-//       localStorage.setItem("listeStock", JSON.stringify(arrayContact));
-//       // On relance l'affichage de notre tableau
-//     } else {
-//       false;
-//     }
-//   });
-// });
-
 /**
  *
  * Creation des Functions
@@ -212,7 +167,7 @@ function afficheStock() {
       <div class="colonne flex">
         <div class="cellule">${element.quantiteProduit}</div>
         <div class="cellule">
-          <a href="#containerProduit">${element.nomProduit}</a>
+          <a href="#containerProduit" onClick="transfertValue(${index})">${element.nomProduit}</a>
         </div>
         <div class="cellule">${element.categorieFroid}</div>
         <div class="cellule">
