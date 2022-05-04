@@ -163,15 +163,14 @@ function saveTableauStock() {
 //fonction recup de mon tableau du local storage
 function recupTableauStock() {
   // RECUPERATION LOCAL STORAGE DANS VARIABLE
-  
+
   let JsontabStock = JSON.parse(localStorage.getItem("listeStock")); // recup json => tab
   if (!JsontabStock) {
     // arrayStock est egal au contenu du local
     arrayStock = [];
-  } else { 
+  } else {
     arrayStock = JsontabStock;
   }
-
 }
 // selecteur choix CHAUD FROID
 function changementType() {
@@ -201,8 +200,7 @@ function afficheStockFroid() {
   let ficheBoisson = "";
 
   arrayStock.forEach((element, index) => {
-    
-    if (element.type == "categorieFroid" && element.quantiteProduit != 0) {
+    if (element.type == "categorieFroid") {
       // creer ma fiche a partir des elements du tableau
       ficheBoisson += `
       <div class="colonne flex">
@@ -215,12 +213,17 @@ function afficheStockFroid() {
         <button id="boutonAjouter">
           <i class="fa-regular fa-circle-plus"></i>
         </button>
-      </div>
-      <div class="cellule">
+        </div>
+        <div>
         <button id="boutonSupprimer">
           <i class="fa-regular fa-circle-minus"></i>
         </button>
       </div>
+      <div>
+      <button id="boutonSupprimerBoisson">
+          <i class="fa-regular fa-circle-minus"></i> Supprimer
+        </button>
+        </div>
     </div>
         `;
     } else {
@@ -248,12 +251,17 @@ function afficheStockChaud() {
         <button id="boutonAjouter">
           <i class="fa-regular fa-circle-plus"></i>
         </button>
-      </div>
-      <div class="cellule">
+        </div>
+        <div>
         <button id="boutonSupprimer">
           <i class="fa-regular fa-circle-minus"></i>
         </button>
       </div>
+      <div>
+      <button id="boutonSupprimerBoisson">
+          <i class="fa-regular fa-circle-minus"></i> Supprimer
+        </button>
+        </div>
     </div>
         `;
     } else {
@@ -281,20 +289,28 @@ function afficheStockAlcool() {
         <button id="boutonAjouter">
           <i class="fa-regular fa-circle-plus"></i>
         </button>
-      </div>
-      <div class="cellule">
+        </div>
+        <div>
         <button id="boutonSupprimer">
           <i class="fa-regular fa-circle-minus"></i>
         </button>
       </div>
+      <div>
+      <button id="boutonSupprimerBoisson">
+          <i class="fa-regular fa-circle-minus"></i> Supprimer
+        </button>
+        </div>
     </div>
         `;
     } else {
       false;
     }
   });
+
   tabAlcool.innerHTML = ficheBoisson;
+  
 }
+
 // Fonction Affichage Stock Boisson à commander
 function afficheStockAlerteCommander() {
   //Action de affiche Contact dans DIV .infoContact
@@ -322,35 +338,12 @@ function afficheStockAlerteRupture() {
       // creer ma fiche a partir des elements du tableau
       ficheBoisson += `
         <li>${element.nomProduit}</li>
-        <button id="boutonSupprimerBoisson">
-          <i class="fa-regular fa-circle-minus"></i> Supprimer
-        </button>
         `;
     } else {
       false;
     }
   });
   boissonRupture.innerHTML = ficheBoisson;
-
-  //Action de supprimer la boisson du stock
-  let suppBoissonData = document.querySelectorAll("#boutonSupprimerBoisson");
-  //arr.forEach(callback, thisArg);
-  suppBoissonData.forEach((element, index) => {
-    console.log(index);
-    element.addEventListener("click", function () {
-      if (confirm("Voulez vous supprimer la boisson du stock ?")) {
-        // Suppression de la li sur la quelle on a cliqué
-        arrayStock.splice(index, 1);
-
-        //affiche le tableau modifier
-        afficheStockAlerteRupture();
-        //stocker notre tableau modifier dans le localStorage
-        saveTableauStock();
-      } else {
-        false;
-      }
-    });
-  });
 }
 // Fonction Affichage des tableau Stock Complet
 function affichageStockComplet() {

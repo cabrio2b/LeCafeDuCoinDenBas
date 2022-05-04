@@ -89,10 +89,15 @@ button:hover {
 .cellule:nth-child(3) {
   flex: 1;
 }
-.cellule:nth-child(1),
+.cellule:nth-child(1){
+  width: 50px;
+}
 .cellule:nth-child(4),
 .cellule:nth-child(5) {
-  width: 50px;
+  width: 20px;
+}
+.cellule:nth-child(6) {
+  width: 100px;
 }
 .entete p {
   margin: 0;
