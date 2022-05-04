@@ -25,7 +25,7 @@ const tabAlcool = document.querySelector(".tabAlcool"); // div tableau B. Alcool
 
 const boissonCommande = document.querySelector(".boissonCommande"); // div à commander
 const boissonRupture = document.querySelector(".boissonRupture"); // div rupture
-const suppBoisson = document.querySelector("#boutonSupprimerBoisson"); // button sup boisson
+const suppBoisson = document.querySelector(".boutonSupprimerBoisson"); // button sup boisson
 const boutonAjouter = document.querySelector("#boutonAjouter"); // button +1 => stock
 const boutonSupprimer = document.querySelector("#boutonSupprimer"); // button -1 => stock
 
@@ -95,16 +95,16 @@ formulaire.addEventListener("submit", function (e) {
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
   console.log(arrayStock);
-  
+
   // showStocks(formData);
   saveTableauStock();
   // actualisation des tableaux de stock
   affichageStockComplet();
-  
+
   // réinitialise le formulaire
   formulaire.reset();
 });
-buttonSuppressionBoisson()
+buttonSuppressionBoisson();
 
 // function showStocks(formData) {
 // Création de la fonction show contact avec la méthode forEach
@@ -196,122 +196,175 @@ function changementType() {
   }
 }
 // Fonction Affichage Stock Boisson Froide
-function afficheStockFroid() {
+function afficheStock() {
   //Action de affiche Contact dans DIV .infoContact
-  let ficheBoisson = "";
+  let ficheBoissonFroide = "";
+  let ficheBoissonChaude = "";
+  let ficheBoissonAlcool = "";
 
   arrayStock.forEach((element, index) => {
     if (element.type == "categorieFroid") {
       // creer ma fiche a partir des elements du tableau
-      ficheBoisson += `
+      ficheBoissonFroide += `
       <div class="colonne flex">
-      <div class="cellule">${element.quantiteProduit}</div>
-      <div class="cellule">
-        <a href="#containerProduit">${element.nomProduit}</a>
-      </div>
-      <div class="cellule">${element.categorieFroid}</div>
-      <div class="cellule">
-        <button id="boutonAjouter">
-          <i class="fa-regular fa-circle-plus"></i>
-        </button>
+        <div class="cellule">${element.quantiteProduit}</div>
+        <div class="cellule">
+          <a href="#containerProduit">${element.nomProduit}</a>
+        </div>
+        <div class="cellule">${element.categorieFroid}</div>
+        <div class="cellule">
+          <button id="boutonAjouter">
+            <i class="fa-regular fa-circle-plus"></i>
+          </button>
         </div>
         <div>
-        <button id="boutonSupprimer">
-          <i class="fa-regular fa-circle-minus"></i>
-        </button>
-      </div>
-      <div>
-      <button id="boutonSupprimerBoisson">
-          <i class="fa-regular fa-circle-minus"></i> Supprimer
-        </button>
+          <button id="boutonSupprimer">
+            <i class="fa-regular fa-circle-minus"></i>
+          </button>
         </div>
-    </div>
+        <div>
+          <button class="boutonSupprimerBoisson">
+            <i class="fa-regular fa-circle-minus"></i> Supprimer
+          </button>
+        </div>
+      </div>
         `;
-        
+      tabFroid.innerHTML = ficheBoissonFroide;
+    } else if (element.type == "categorieChaud") {
+      // creer ma fiche a partir des elements du tableau
+      ficheBoissonChaude += `
+      <div class="colonne flex">
+        <div class="cellule">${element.quantiteProduit}</div>
+        <div class="cellule">
+          <a href="#containerProduit">${element.nomProduit}</a>
+        </div>
+        <div class="cellule">${element.categorieChaud}</div>
+        <div class="cellule">
+          <button id="boutonAjouter">
+            <i class="fa-regular fa-circle-plus"></i>
+          </button>
+        </div>
+        <div>
+          <button id="boutonSupprimer">
+            <i class="fa-regular fa-circle-minus"></i>
+          </button>
+        </div>
+        <div>
+          <button class="boutonSupprimerBoisson">
+            <i class="fa-regular fa-circle-minus"></i> Supprimer
+          </button>
+        </div>
+      </div>
+        `;
+      tabChaud.innerHTML = ficheBoissonChaude;
     } else {
-      false;
+      // creer ma fiche a partir des elements du tableau
+      ficheBoissonAlcool += `
+      <div class="colonne flex">
+        <div class="cellule">${element.quantiteProduit}</div>
+        <div class="cellule">
+          <a href="#containerProduit">${element.nomProduit}</a>
+        </div>
+        <div class="cellule">${element.degreeAlcohol}</div>
+        <div class="cellule">
+          <button id="boutonAjouter">
+            <i class="fa-regular fa-circle-plus"></i>
+          </button>
+        </div>
+        <div>
+          <button id="boutonSupprimer">
+            <i class="fa-regular fa-circle-minus"></i>
+          </button>
+        </div>
+        <div>
+          <button class="boutonSupprimerBoisson">
+            <i class="fa-regular fa-circle-minus"></i> Supprimer
+          </button>
+        </div>
+      </div>
+        `;
+      tabAlcool.innerHTML = ficheBoissonAlcool;
     }
   });
-  tabFroid.innerHTML = ficheBoisson;
 }
 // Fonction Affichage Stock Boisson Chaude
-function afficheStockChaud() {
-  //Action de affiche Contact dans DIV .infoContact
-  let ficheBoisson = "";
+// function afficheStockChaud() {
+//   //Action de affiche Contact dans DIV .infoContact
+//   let ficheBoisson = "";
 
-  arrayStock.forEach((element, index) => {
-    if (element.type == "categorieChaud") {
-      // creer ma fiche a partir des elements du tableau
-      ficheBoisson += `
-      <div class="colonne flex">
-      <div class="cellule">${element.quantiteProduit}</div>
-      <div class="cellule">
-        <a href="#containerProduit">${element.nomProduit}</a>
-      </div>
-      <div class="cellule">${element.categorieChaud}</div>
-      <div class="cellule">
-        <button id="boutonAjouter">
-          <i class="fa-regular fa-circle-plus"></i>
-        </button>
-        </div>
-        <div>
-        <button id="boutonSupprimer">
-          <i class="fa-regular fa-circle-minus"></i>
-        </button>
-      </div>
-      <div>
-      <button id="boutonSupprimerBoisson">
-          <i class="fa-regular fa-circle-minus"></i> Supprimer
-        </button>
-        </div>
-    </div>
-        `;
-    } else {
-      false;
-    }
-  });
-  tabChaud.innerHTML = ficheBoisson;
-}
+//   arrayStock.forEach((element, index) => {
+//     if (element.type == "categorieChaud") {
+//       // creer ma fiche a partir des elements du tableau
+//       ficheBoisson += `
+//       <div class="colonne flex">
+//       <div class="cellule">${element.quantiteProduit}</div>
+//       <div class="cellule">
+//         <a href="#containerProduit">${element.nomProduit}</a>
+//       </div>
+//       <div class="cellule">${element.categorieChaud}</div>
+//       <div class="cellule">
+//         <button id="boutonAjouter">
+//           <i class="fa-regular fa-circle-plus"></i>
+//         </button>
+//         </div>
+//         <div>
+//         <button id="boutonSupprimer">
+//           <i class="fa-regular fa-circle-minus"></i>
+//         </button>
+//       </div>
+//       <div>
+//       <button id="boutonSupprimerBoisson">
+//           <i class="fa-regular fa-circle-minus"></i> Supprimer
+//         </button>
+//         </div>
+//     </div>
+//         `;
+//     } else {
+//       false;
+//     }
+//   });
+//   tabChaud.innerHTML = ficheBoisson;
+// }
 // Fonction Affichage Stock Boisson alcoolisée
-function afficheStockAlcool() {
-  //Action de affiche Contact dans DIV .infoContact
-  let ficheBoisson = "";
+// function afficheStockAlcool() {
+//   //Action de affiche Contact dans DIV .infoContact
+//   let ficheBoisson = "";
 
-  arrayStock.forEach((element, index) => {
-    if (element.type == "categorieAlcool") {
-      // creer ma fiche a partir des elements du tableau
-      ficheBoisson += `
-      <div class="colonne flex">
-      <div class="cellule">${element.quantiteProduit}</div>
-      <div class="cellule">
-        <a href="#containerProduit">${element.nomProduit}</a>
-      </div>
-      <div class="cellule">${element.degreeAlcohol}</div>
-      <div class="cellule">
-        <button id="boutonAjouter">
-          <i class="fa-regular fa-circle-plus"></i>
-        </button>
-        </div>
-        <div>
-        <button id="boutonSupprimer">
-          <i class="fa-regular fa-circle-minus"></i>
-        </button>
-      </div>
-      <div>
-      <button id="boutonSupprimerBoisson">
-          <i class="fa-regular fa-circle-minus"></i> Supprimer
-        </button>
-        </div>
-    </div>
-        `;
-    } else {
-      false;
-    }
-  });
+//   arrayStock.forEach((element, index) => {
+//     if (element.type == "categorieAlcool") {
+//       // creer ma fiche a partir des elements du tableau
+//       ficheBoisson += `
+//       <div class="colonne flex">
+//       <div class="cellule">${element.quantiteProduit}</div>
+//       <div class="cellule">
+//         <a href="#containerProduit">${element.nomProduit}</a>
+//       </div>
+//       <div class="cellule">${element.degreeAlcohol}</div>
+//       <div class="cellule">
+//         <button id="boutonAjouter">
+//           <i class="fa-regular fa-circle-plus"></i>
+//         </button>
+//         </div>
+//         <div>
+//         <button id="boutonSupprimer">
+//           <i class="fa-regular fa-circle-minus"></i>
+//         </button>
+//       </div>
+//       <div>
+//       <button id="boutonSupprimerBoisson">
+//           <i class="fa-regular fa-circle-minus"></i> Supprimer
+//         </button>
+//         </div>
+//     </div>
+//         `;
+//     } else {
+//       false;
+//     }
+//   });
 
-  tabAlcool.innerHTML = ficheBoisson;
-  
-}
+//   tabAlcool.innerHTML = ficheBoisson;
+
+// }
 
 // Fonction Affichage Stock Boisson à commander
 function afficheStockAlerteCommander() {
@@ -349,20 +402,17 @@ function afficheStockAlerteRupture() {
 }
 // Fonction Affichage des tableau Stock Complet
 function affichageStockComplet() {
-  afficheStockFroid();
-  afficheStockChaud();
-  afficheStockAlcool();
+  afficheStock();
   afficheStockAlerteCommander();
   afficheStockAlerteRupture();
 }
 // Fonction bouton suppression total Boisson
 function buttonSuppressionBoisson() {
   //Action de supprimer la boisson du stock
-  let suppBoissonData = document.querySelectorAll("#boutonSupprimerBoisson");
+  let suppBoissonData = document.querySelectorAll(".boutonSupprimerBoisson");
   console.log(suppBoissonData);
   //arr.forEach(callback, thisArg);
   suppBoissonData.forEach((element, index) => {
-    
     element.addEventListener("click", function () {
       if (confirm("Voulez vous supprimer la boisson du stock ?")) {
         // Suppression de la li sur la quelle on a cliqué
@@ -374,7 +424,7 @@ function buttonSuppressionBoisson() {
       } else {
         false;
       }
-    })
+    });
   });
 }
 
@@ -430,6 +480,3 @@ class StockFroid extends Stock {
     this.type = "categorieFroid";
   }
 }
-
-
-  
