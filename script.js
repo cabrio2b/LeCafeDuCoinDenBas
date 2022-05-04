@@ -180,15 +180,11 @@ function changementType() {
   if (type == "choixAlcool") {
     optionAlcool.style = "display:block";
     selectdegreAlcool.setAttribute('required', true);
-    // selectInputChaud.setAttribute('required',false);
-    // selectInputFroid.setAttribute('required',false);
     optionChaud.style.display = "none";
     optionFroid.style.display = "none";
   } else if (type == "choixChaud") {
     optionChaud.style = "display:block";
     selectInputChaud.setAttribute('required',true);
-    // selectdegreAlcool.setAttribute('required', false);
-    // selectInputFroid.setAttribute('required',false);
     optionAlcool.style.display = "none";
     optionFroid.style.display = "none";
   } else {
@@ -336,14 +332,14 @@ function afficheStockAlerteRupture() {
 
   //Action de supprimer la boisson du stock
   let suppBoissonData = document.querySelectorAll("#boutonSupprimerBoisson");
-
   //arr.forEach(callback, thisArg);
   suppBoissonData.forEach((element, index) => {
+    console.log(index);
     element.addEventListener("click", function () {
       if (confirm("Voulez vous supprimer la boisson du stock ?")) {
         // Suppression de la li sur la quelle on a cliqué
         arrayStock.splice(index, 1);
-        console.log(arrayStock);
+        
         //affiche le tableau modifier
         afficheStockAlerteRupture();
         //stocker notre tableau modifier dans le localStorage
