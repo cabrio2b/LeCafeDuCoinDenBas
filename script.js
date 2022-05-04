@@ -176,7 +176,7 @@ function afficheStock() {
           </button>
         </div>
         <div>
-          <button class="boutonSupprimer" onClick="buttonmoins(${index})">
+          <button class="boutonSupprimer" onClick="buttonMoins(${index})">
             <i class="fa-regular fa-circle-minus"></i>
           </button>
         </div>

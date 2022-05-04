@@ -278,36 +278,26 @@
               </div>
             </div>
             <div class="GestionDeux">
+              <div class="classBoisson">
+                <label>Prix de vente HT:</label>
+                <input
+                  class=""
+                  type="text"
+                  name="prixVenteHT"
+                  placeholder="Prix de vente HT"
+                  onKeyUp="CalculerMontantTTC()"
+                />
+              </div>
+
                 <div class="classBoisson">
-                  <label>Catégorie de boisson:</label>
+                  <label>Prix de vente TTC:</label>
                   <input
                     class=""
                     type="text"
-                    name="Type"
-                    placeholder="Type de boisson"
+                    name="PrixVenteTTC"
+                    placeholder="Prix de vente TTC "
                   />
                 </div>
-
-                <div class="classBoisson">
-                    <label>Prix de vente HT:</label>
-                    <input
-                      class=""
-                      type="text"
-                      name="prixVenteHT"
-                      placeholder="Prix de vente HT"
-                      onKeyUp="CalculerMontantTTC()"
-                    />
-                  </div>
-
-                  <div class="classBoisson">
-                    <label>Prix de vente TTC:</label>
-                    <input
-                      class=""
-                      type="text"
-                      name="PrixVenteTTC"
-                      placeholder="Prix de vente TTC "
-                    />
-                  </div>
               </div>
 
               <div class="GestionTrois">
@@ -331,14 +321,14 @@
                     placeholder="Coef Marge HT"
                   />
                 </div>
-                <!-- checkbox yes no -->
+                <!-- checkbox yes no 
                 <div class="ruptureB">
                   <label>Rupture de stock :</label>
                   <p class="onoff">
                     <input type="checkbox" value="1" id="checkboxID" />
                     <label for="checkboxID"></label>
                   </p>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
