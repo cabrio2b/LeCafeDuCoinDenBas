@@ -341,15 +341,19 @@
           </div>
           
           <script>
+            // script dans le form pour calcul marge ht et tva
             function CalculerMontantTTC() {
               // rappel only number
               if (isNaN(formulaire.prixVenteHT.value) == true) {
                 alert("Merci de saisir un montant correct. Calcul impossible.");
                 formulaire.prixVenteHT.value = "";
-                // calcul
+                
               } else if (test) {
+                // calcul marge HT
                 formulaire.MargeHT.value =
-                  formulaire.prixVenteHT.value / formulaire.prixAchatHT.value;
+                formulaire.prixVenteHT.value / formulaire.prixAchatHT.value;
+
+                // calcul tva
                 formulaire.PrixVenteTTC.value = formulaire.prixVenteHT.value * 1.2;
               } else {
                 false;
