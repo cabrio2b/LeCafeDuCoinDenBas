@@ -26,8 +26,8 @@ const tabAlcool = document.querySelector(".tabAlcool"); // div tableau B. Alcool
 const boissonCommande = document.querySelector(".boissonCommande"); // div à commander
 const boissonRupture = document.querySelector(".boissonRupture"); // div rupture
 const suppBoisson = document.querySelector(".boutonSupprimerBoisson"); // button sup boisson
-const boutonAjouter = document.querySelector("#boutonAjouter"); // button +1 => stock
-const boutonSupprimer = document.querySelector("#boutonSupprimer"); // button -1 => stock
+const boutonAjouter = document.querySelector(".boutonAjouter"); // button +1 => stock
+const boutonSupprimer = document.querySelector(".boutonSupprimer"); // button -1 => stock
 
 // require sur les types de boisson
 const selectdegreAlcool = document.querySelector('select[name="degreAlcool"]');
@@ -102,7 +102,8 @@ formulaire.addEventListener("submit", function (e) {
   affichageStockComplet();
 
   // réinitialise le formulaire
-  formulaire.reset();
+  //formulaire.reset();
+  document.location.reload();
 });
 
 // function showStocks(formData) {
@@ -182,16 +183,19 @@ function changementType() {
     selectdegreAlcool.setAttribute("required", true);
     optionChaud.style.display = "none";
     optionFroid.style.display = "none";
+    
   } else if (type == "choixChaud") {
     optionChaud.style = "display:block";
     selectInputChaud.setAttribute("required", true);
     optionAlcool.style.display = "none";
     optionFroid.style.display = "none";
+    
   } else {
     optionFroid.style = "display:block";
     selectInputFroid.setAttribute("required", true);
     optionChaud.style.display = "none";
     optionAlcool.style.display = "none";
+    
   }
 }
 // Fonction Affichage Stock Boisson Froide
@@ -212,12 +216,12 @@ function afficheStock() {
         </div>
         <div class="cellule">${element.categorieFroid}</div>
         <div class="cellule">
-          <button id="boutonAjouter">
+          <button class="boutonAjouter" onClick="buttonPlus(${index})">
             <i class="fa-regular fa-circle-plus"></i>
           </button>
         </div>
         <div>
-          <button id="boutonSupprimer">
+          <button class="boutonSupprimer" onClick="buttonmoins(${index})">
             <i class="fa-regular fa-circle-minus"></i>
           </button>
         </div>
@@ -239,12 +243,12 @@ function afficheStock() {
         </div>
         <div class="cellule">${element.categorieChaud}</div>
         <div class="cellule">
-          <button id="boutonAjouter">
+          <button class="boutonAjouter" onClick="buttonPlus(${index})">
             <i class="fa-regular fa-circle-plus"></i>
           </button>
         </div>
         <div>
-          <button id="boutonSupprimer">
+          <button class="boutonSupprimer"  onClick="buttonMoins(${index})">
             <i class="fa-regular fa-circle-minus"></i>
           </button>
         </div>
@@ -266,12 +270,12 @@ function afficheStock() {
         </div>
         <div class="cellule">${element.degreeAlcohol}</div>
         <div class="cellule">
-          <button id="boutonAjouter">
+          <button class="boutonAjouter" onClick="buttonPlus(${index})">
             <i class="fa-regular fa-circle-plus"></i>
           </button>
         </div>
         <div>
-          <button id="boutonSupprimer">
+          <button class="boutonSupprimer" onClick="buttonMoins(${index})">
             <i class="fa-regular fa-circle-minus"></i>
           </button>
         </div>
@@ -286,85 +290,6 @@ function afficheStock() {
     }
   });
 }
-// Fonction Affichage Stock Boisson Chaude
-// function afficheStockChaud() {
-//   //Action de affiche Contact dans DIV .infoContact
-//   let ficheBoisson = "";
-
-//   arrayStock.forEach((element, index) => {
-//     if (element.type == "categorieChaud") {
-//       // creer ma fiche a partir des elements du tableau
-//       ficheBoisson += `
-//       <div class="colonne flex">
-//       <div class="cellule">${element.quantiteProduit}</div>
-//       <div class="cellule">
-//         <a href="#containerProduit">${element.nomProduit}</a>
-//       </div>
-//       <div class="cellule">${element.categorieChaud}</div>
-//       <div class="cellule">
-//         <button id="boutonAjouter">
-//           <i class="fa-regular fa-circle-plus"></i>
-//         </button>
-//         </div>
-//         <div>
-//         <button id="boutonSupprimer">
-//           <i class="fa-regular fa-circle-minus"></i>
-//         </button>
-//       </div>
-//       <div>
-//       <button id="boutonSupprimerBoisson">
-//           <i class="fa-regular fa-circle-minus"></i> Supprimer
-//         </button>
-//         </div>
-//     </div>
-//         `;
-//     } else {
-//       false;
-//     }
-//   });
-//   tabChaud.innerHTML = ficheBoisson;
-// }
-// Fonction Affichage Stock Boisson alcoolisée
-// function afficheStockAlcool() {
-//   //Action de affiche Contact dans DIV .infoContact
-//   let ficheBoisson = "";
-
-//   arrayStock.forEach((element, index) => {
-//     if (element.type == "categorieAlcool") {
-//       // creer ma fiche a partir des elements du tableau
-//       ficheBoisson += `
-//       <div class="colonne flex">
-//       <div class="cellule">${element.quantiteProduit}</div>
-//       <div class="cellule">
-//         <a href="#containerProduit">${element.nomProduit}</a>
-//       </div>
-//       <div class="cellule">${element.degreeAlcohol}</div>
-//       <div class="cellule">
-//         <button id="boutonAjouter">
-//           <i class="fa-regular fa-circle-plus"></i>
-//         </button>
-//         </div>
-//         <div>
-//         <button id="boutonSupprimer">
-//           <i class="fa-regular fa-circle-minus"></i>
-//         </button>
-//       </div>
-//       <div>
-//       <button id="boutonSupprimerBoisson">
-//           <i class="fa-regular fa-circle-minus"></i> Supprimer
-//         </button>
-//         </div>
-//     </div>
-//         `;
-//     } else {
-//       false;
-//     }
-//   });
-
-//   tabAlcool.innerHTML = ficheBoisson;
-
-// }
-
 // Fonction Affichage Stock Boisson à commander
 function afficheStockAlerteCommander() {
   //Action de affiche Contact dans DIV .infoContact
@@ -409,11 +334,7 @@ function affichageStockComplet() {
 function buttonSuppressionBoisson(index) {
   //Action de supprimer la boisson du stock
   let suppBoissonData = document.querySelectorAll(".boutonSupprimerBoisson");
-  console.log(suppBoissonData);
-  //arr.forEach(callback, thisArg);
 
-  console.log(arrayStock);
-  alert(index);
   if (confirm("Voulez vous supprimer la boisson du stock ?")) {
     // Suppression de la li sur la quelle on a cliqué
     arrayStock.splice(index, 1);
@@ -425,6 +346,29 @@ function buttonSuppressionBoisson(index) {
   } else {
     false;
   }
+}
+// fonction bouton Plus
+function buttonPlus(index) {
+  //Action de ajouter la boisson du stock
+  let quantiteProduits = document.querySelector(".boutonAjouter");
+  quantiteProduits.value = arrayStock[index].quantiteProduit;
+  quantiteProduits = Number(quantiteProduits.value) + 1;
+  arrayStock[index].quantiteProduit = quantiteProduits;
+  //stocker notre tableau modifier dans le localStorage
+  saveTableauStock();
+  document.location.reload();
+}
+// fonction bouton Moins
+function buttonMoins(index) {
+  //Action de supprimer la boisson du stock
+  let quantiteProduits = document.querySelector(".boutonSupprimer");
+  quantiteProduits.value = arrayStock[index].quantiteProduit;
+  quantiteProduits = Number(quantiteProduits.value) - 1;
+  arrayStock[index].quantiteProduit = quantiteProduits;
+  console.log(arrayStock);
+  //stocker notre tableau modifier dans le localStorage
+  saveTableauStock();
+  document.location.reload();
 }
 
 /**
