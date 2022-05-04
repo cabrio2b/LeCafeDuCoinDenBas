@@ -30,7 +30,7 @@ const boutonAjouter = document.querySelector("#boutonAjouter"); // button +1 => 
 const boutonSupprimer = document.querySelector("#boutonSupprimer"); // button -1 => stock
 
 // require sur les types de boisson
-const selectdegreAlcool = document.querySelector('select[name="degréAlcool"]');
+const selectdegreAlcool = document.querySelector('select[name="degreAlcool"]');
 const selectInputChaud = document.querySelector('select[name="inputChaud"]');
 const selectInputFroid = document.querySelector('select[name="inputFroid"]');
 
@@ -51,10 +51,10 @@ formulaire.addEventListener("submit", function (e) {
 
   let formData = new FormData(formulaire);
   let nameGet = formData.get("choixBoisson");
-  let quantityGet = formData.get("quantitéProduits");
+  let quantityGet = formData.get("quantiteProduits");
   let prixAchatHTGet = formData.get("prixAchatHT");
   let prixVenteHTGet = formData.get("prixVenteHT");
-  let degreeAlcoholGet = formData.get("degréAlcool");
+  let degreeAlcoholGet = formData.get("degreAlcool");
   let choixBoissonChaudeGet = formData.get("inputChaud");
   let choixBoissonFroideGet = formData.get("inputFroid");
 
@@ -95,15 +95,16 @@ formulaire.addEventListener("submit", function (e) {
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
   console.log(arrayStock);
-
+  
   // showStocks(formData);
   saveTableauStock();
   // actualisation des tableaux de stock
   affichageStockComplet();
-
+  
   // réinitialise le formulaire
   formulaire.reset();
 });
+buttonSuppressionBoisson()
 
 // function showStocks(formData) {
 // Création de la fonction show contact avec la méthode forEach
@@ -226,6 +227,7 @@ function afficheStockFroid() {
         </div>
     </div>
         `;
+        
     } else {
       false;
     }
@@ -238,7 +240,7 @@ function afficheStockChaud() {
   let ficheBoisson = "";
 
   arrayStock.forEach((element, index) => {
-    if (element.type == "categorieChaud" && element.quantiteProduit != 0) {
+    if (element.type == "categorieChaud") {
       // creer ma fiche a partir des elements du tableau
       ficheBoisson += `
       <div class="colonne flex">
@@ -276,7 +278,7 @@ function afficheStockAlcool() {
   let ficheBoisson = "";
 
   arrayStock.forEach((element, index) => {
-    if (element.type == "categorieAlcool" && element.quantiteProduit != 0) {
+    if (element.type == "categorieAlcool") {
       // creer ma fiche a partir des elements du tableau
       ficheBoisson += `
       <div class="colonne flex">
@@ -353,6 +355,28 @@ function affichageStockComplet() {
   afficheStockAlerteCommander();
   afficheStockAlerteRupture();
 }
+// Fonction bouton suppression total Boisson
+function buttonSuppressionBoisson() {
+  //Action de supprimer la boisson du stock
+  let suppBoissonData = document.querySelectorAll("#boutonSupprimerBoisson");
+  console.log(suppBoissonData);
+  //arr.forEach(callback, thisArg);
+  suppBoissonData.forEach((element, index) => {
+    
+    element.addEventListener("click", function () {
+      if (confirm("Voulez vous supprimer la boisson du stock ?")) {
+        // Suppression de la li sur la quelle on a cliqué
+        arrayStock.splice(index, 1);
+        //affiche le tableau modifier
+        affichageStockComplet();
+        //stocker notre tableau modifier dans le localStorage
+        saveTableauStock();
+      } else {
+        false;
+      }
+    })
+  });
+}
 
 /**
  *
@@ -406,3 +430,6 @@ class StockFroid extends Stock {
     this.type = "categorieFroid";
   }
 }
+
+
+  
