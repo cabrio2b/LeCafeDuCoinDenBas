@@ -37,7 +37,6 @@ const selectInputFroid = document.querySelector('select[name="inputFroid"]');
 const selectBoisson = document.querySelector(".test"); // ???????
 
 let arrayStock;
-
 recupTableauStock();
 
 const conData = document.querySelector("#data");
@@ -164,13 +163,15 @@ function saveTableauStock() {
 //fonction recup de mon tableau du local storage
 function recupTableauStock() {
   // RECUPERATION LOCAL STORAGE DANS VARIABLE
+  
   let JsontabStock = JSON.parse(localStorage.getItem("listeStock")); // recup json => tab
-  if (JsontabStock != "") {
+  if (!JsontabStock) {
     // arrayStock est egal au contenu du local
-    arrayStock = JsontabStock;
-  } else {
     arrayStock = [];
+  } else { 
+    arrayStock = JsontabStock;
   }
+
 }
 // selecteur choix CHAUD FROID
 function changementType() {
@@ -200,6 +201,7 @@ function afficheStockFroid() {
   let ficheBoisson = "";
 
   arrayStock.forEach((element, index) => {
+    
     if (element.type == "categorieFroid" && element.quantiteProduit != 0) {
       // creer ma fiche a partir des elements du tableau
       ficheBoisson += `
