@@ -34,7 +34,7 @@ const selectdegreAlcool = document.querySelector('select[name="degréAlcool"]');
 const selectInputChaud = document.querySelector('select[name="inputChaud"]');
 const selectInputFroid = document.querySelector('select[name="inputFroid"]');
 
-const selectBoisson = document.querySelector(".selectTypeBoisson"); // ???????
+const selectBoisson = document.querySelector(".test"); //ne pas toucher celui la
 
 let arrayStock;
 
