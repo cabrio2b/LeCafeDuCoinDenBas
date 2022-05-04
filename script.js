@@ -104,7 +104,6 @@ formulaire.addEventListener("submit", function (e) {
   // réinitialise le formulaire
   formulaire.reset();
 });
-buttonSuppressionBoisson();
 
 // function showStocks(formData) {
 // Création de la fonction show contact avec la méthode forEach
@@ -223,7 +222,7 @@ function afficheStock() {
           </button>
         </div>
         <div>
-          <button class="boutonSupprimerBoisson">
+          <button class="boutonSupprimerBoisson" onClick="buttonSuppressionBoisson(${index})">
             <i class="fa-regular fa-circle-minus"></i> Supprimer
           </button>
         </div>
@@ -250,7 +249,7 @@ function afficheStock() {
           </button>
         </div>
         <div>
-          <button class="boutonSupprimerBoisson">
+          <button class="boutonSupprimerBoisson" onClick="buttonSuppressionBoisson(${index})">
             <i class="fa-regular fa-circle-minus"></i> Supprimer
           </button>
         </div>
@@ -277,7 +276,7 @@ function afficheStock() {
           </button>
         </div>
         <div>
-          <button class="boutonSupprimerBoisson">
+          <button class="boutonSupprimerBoisson"  onClick="buttonSuppressionBoisson(${index})">
             <i class="fa-regular fa-circle-minus"></i> Supprimer
           </button>
         </div>
@@ -407,25 +406,25 @@ function affichageStockComplet() {
   afficheStockAlerteRupture();
 }
 // Fonction bouton suppression total Boisson
-function buttonSuppressionBoisson() {
+function buttonSuppressionBoisson(index) {
   //Action de supprimer la boisson du stock
   let suppBoissonData = document.querySelectorAll(".boutonSupprimerBoisson");
   console.log(suppBoissonData);
   //arr.forEach(callback, thisArg);
-  suppBoissonData.forEach((element, index) => {
-    element.addEventListener("click", function () {
-      if (confirm("Voulez vous supprimer la boisson du stock ?")) {
-        // Suppression de la li sur la quelle on a cliqué
-        arrayStock.splice(index, 1);
-        //affiche le tableau modifier
-        affichageStockComplet();
-        //stocker notre tableau modifier dans le localStorage
-        saveTableauStock();
-      } else {
-        false;
-      }
-    });
-  });
+
+  console.log(arrayStock);
+  alert(index);
+  if (confirm("Voulez vous supprimer la boisson du stock ?")) {
+    // Suppression de la li sur la quelle on a cliqué
+    arrayStock.splice(index, 1);
+    //affiche le tableau modifier
+    affichageStockComplet();
+    //stocker notre tableau modifier dans le localStorage
+    saveTableauStock();
+    document.location.reload();
+  } else {
+    false;
+  }
 }
 
 /**
