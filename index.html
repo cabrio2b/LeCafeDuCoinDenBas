@@ -236,6 +236,7 @@
                   type="text"
                   name="prixAchatHT"
                   placeholder="Prix d'achat HT"
+                  onKeyUp="CalculerMontantTTC()"
                 />
               </div>
 
@@ -291,6 +292,7 @@
                       type="text"
                       name="prixVenteHT"
                       placeholder="Prix de vente HT"
+                      onKeyUp="CalculerMontantTTC()"
                     />
                   </div>
 
@@ -318,12 +320,12 @@
                 </div>
 
                 <div class="classBoisson">
-                  <label>Marge HT :</label>
+                  <label>Coefficient Marge HT :</label>
                   <input
                     class=""
                     type="text"
                     name="MargeHT"
-                    placeholder="Marge HT"
+                    placeholder="Coef Marge HT"
                   />
                 </div>
                 <!-- checkbox yes no -->
@@ -337,11 +339,30 @@
               </div>
             </div>
           </div>
+          
+          <script>
+            function CalculerMontantTTC() {
+              // rappel only number
+              if (isNaN(formulaire.prixVenteHT.value) == true) {
+                alert("Merci de saisir un montant correct. Calcul impossible.");
+                formulaire.prixVenteHT.value = "";
+                // calcul
+              } else if (test) {
+                formulaire.MargeHT.value =
+                  formulaire.prixVenteHT.value / formulaire.prixAchatHT.value;
+                formulaire.PrixVenteTTC.value = formulaire.prixVenteHT.value * 1.2;
+              } else {
+                false;
+              }
+            }
+          </script>
         </form>
       </div>
     </section>
-
+  
     <!-- Container Footer-->
-    <footer></footer>
+    <footer>
+
+    </footer>
   </body>
 </html>
