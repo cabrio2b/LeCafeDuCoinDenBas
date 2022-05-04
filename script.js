@@ -32,9 +32,9 @@ const boutonSupprimer = document.querySelector("#boutonSupprimer"); // button -1
 // require sur les types de boisson
 const selectdegreAlcool = document.querySelector('select[name="degréAlcool"]');
 const selectInputChaud = document.querySelector('select[name="inputChaud"]');
-const selectInputFroid = document.querySelector('select[name="inputFroid"]'); 
+const selectInputFroid = document.querySelector('select[name="inputFroid"]');
 
-const selectBoisson = document.querySelector(".test"); // ???????
+const selectBoisson = document.querySelector(".selectTypeBoisson"); // ???????
 
 let arrayStock;
 
@@ -179,17 +179,17 @@ function changementType() {
   //pour selecteur Perso
   if (type == "choixAlcool") {
     optionAlcool.style = "display:block";
-    selectdegreAlcool.setAttribute('required', true);
+    selectdegreAlcool.setAttribute("required", true);
     optionChaud.style.display = "none";
     optionFroid.style.display = "none";
   } else if (type == "choixChaud") {
     optionChaud.style = "display:block";
-    selectInputChaud.setAttribute('required',true);
+    selectInputChaud.setAttribute("required", true);
     optionAlcool.style.display = "none";
     optionFroid.style.display = "none";
   } else {
     optionFroid.style = "display:block";
-    selectInputFroid.setAttribute('required',true);
+    selectInputFroid.setAttribute("required", true);
     optionChaud.style.display = "none";
     optionAlcool.style.display = "none";
   }
@@ -339,7 +339,7 @@ function afficheStockAlerteRupture() {
       if (confirm("Voulez vous supprimer la boisson du stock ?")) {
         // Suppression de la li sur la quelle on a cliqué
         arrayStock.splice(index, 1);
-        
+
         //affiche le tableau modifier
         afficheStockAlerteRupture();
         //stocker notre tableau modifier dans le localStorage
@@ -364,7 +364,7 @@ function affichageStockComplet() {
  * Creation des classes Stock
  *
  */
- class Stock {
+class Stock {
   constructor(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente) {
     this.nomProduit = nomProduit;
     this.quantiteProduit = quantiteProduit;
