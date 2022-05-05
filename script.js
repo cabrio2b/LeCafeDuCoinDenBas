@@ -148,7 +148,7 @@ function changementType() {
     // // bien passer le required  en false
     // selectInputChaud.setAttribute("required", false);
     // selectInputFroid.setAttribute("required", false);
-    // optionChaud.style.display = "none";
+    optionChaud.style.display = "none";
     optionFroid.style.display = "none";
   } else if (type == "choixChaud") {
     optionChaud.style = "display:block";
