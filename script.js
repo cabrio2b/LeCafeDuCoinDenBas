@@ -114,7 +114,7 @@ formulaire.addEventListener("submit", function (e) {
   document.location.reload();
 });
 
-new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
+
 /**
  *
  * Creation des Functions
