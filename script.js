@@ -141,27 +141,27 @@ function recupTableauStock() {
 function changementType() {
   let type = document.getElementById("type").value;
 
-  //pour selecteur Perso
+  //pour selecteur type boisson
   if (type == "choixAlcool") {
     optionAlcool.style = "display:block";
-    // selectdegreAlcool.setAttribute("required", true);
-    // // bien passer le required  en false
+    selectdegreAlcool.setAttribute("required", true);
+    // bien passer le required  en false ARNAUD CA MARCHE PAS CA!
     // selectInputChaud.setAttribute("required", false);
     // selectInputFroid.setAttribute("required", false);
     optionChaud.style.display = "none";
     optionFroid.style.display = "none";
   } else if (type == "choixChaud") {
     optionChaud.style = "display:block";
-    // selectInputChaud.setAttribute("required", true);
+    selectInputChaud.setAttribute("required", true);
     // selectdegreAlcool.setAttribute("required", false);
     // selectInputFroid.setAttribute("required", false);
     optionAlcool.style.display = "none";
     optionFroid.style.display = "none";
   } else {
     optionFroid.style = "display:block";
-    // selectInputFroid.setAttribute("required", true);
-    // // selectdegreAlcool.setAttribute("required", false);
-    // // selectInputChaud.setAttribute("required", false);
+    selectInputFroid.setAttribute("required", true);
+    // selectdegreAlcool.setAttribute("required", false);
+    // selectInputChaud.setAttribute("required", false);
     optionChaud.style.display = "none";
     optionAlcool.style.display = "none";
   }
@@ -351,17 +351,11 @@ function transfertValue(index) {
     arrayStock[index].categorieChaud = selectInputChaud.value;
     arrayStock[index].categorieFroid = selectInputFroid.value;
 
-    if (confirm("Voulez vous modifier la boisson du stock ?")) {
-      // Suppression de la li sur la quelle on a cliqué
-      arrayStock.splice(index, 1);
-      //affiche le tableau modifier
-      afficheStock();
-      //stocker notre tableau modifier dans le localStorage
-      saveTableauStock();
-      document.location.reload();
-    } else {
-      false;
-    }
+    arrayStock.splice(index, 1);
+    //affiche le tableau modifier
+    affichageStockComplet();
+    //stocker notre tableau modifier dans le localStorage
+    saveTableauStock();
   });
 }
 // Fonction bouton suppression total Boisson
