@@ -100,7 +100,7 @@ formulaire.addEventListener("submit", function (e) {
   }
 
   console.log(stockInformations);
-  
+
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
   console.log(arrayStock);
@@ -114,7 +114,7 @@ formulaire.addEventListener("submit", function (e) {
   document.location.reload();
 });
 
-new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
+// new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
 /**
  *
  * Creation des Functions
@@ -144,21 +144,29 @@ function changementType() {
   //pour selecteur Perso
   if (type == "choixAlcool") {
     optionAlcool.style = "display:block";
-    selectdegreAlcool.setAttribute("required", true);
-    optionChaud.style.display = "none";
+    // selectdegreAlcool.setAttribute("required", true);
+    // // bien passer le required  en false
+    // selectInputChaud.setAttribute("required", false);
+    // selectInputFroid.setAttribute("required", false);
+    // optionChaud.style.display = "none";
     optionFroid.style.display = "none";
   } else if (type == "choixChaud") {
     optionChaud.style = "display:block";
-    selectInputChaud.setAttribute("required", true);
+    // selectInputChaud.setAttribute("required", true);
+    // selectdegreAlcool.setAttribute("required", false);
+    // selectInputFroid.setAttribute("required", false);
     optionAlcool.style.display = "none";
     optionFroid.style.display = "none";
   } else {
     optionFroid.style = "display:block";
-    selectInputFroid.setAttribute("required", true);
+    // selectInputFroid.setAttribute("required", true);
+    // // selectdegreAlcool.setAttribute("required", false);
+    // // selectInputChaud.setAttribute("required", false);
     optionChaud.style.display = "none";
     optionAlcool.style.display = "none";
   }
 }
+
 // Fonction Affichage Stock Boisson Froide
 function afficheStock() {
   //Action de affiche Contact dans DIV .infoContact
@@ -297,11 +305,10 @@ function CalculerMontantTTC() {
   if (isNaN(formulaire.prixVenteHT.value) == true) {
     alert("Merci de saisir un montant correct. Calcul impossible.");
     formulaire.prixVenteHT.value = "";
-    
   } else if (test) {
     // calcul marge HT
     formulaire.MargeHT.value =
-    formulaire.prixVenteHT.value / formulaire.prixAchatHT.value;
+      formulaire.prixVenteHT.value / formulaire.prixAchatHT.value;
 
     // calcul tva
     formulaire.PrixVenteTTC.value = formulaire.prixVenteHT.value * 1.2;
@@ -309,7 +316,6 @@ function CalculerMontantTTC() {
     false;
   }
 }
-// Fonction pour modifier une boisson
 function transfertValue(index) {
   let choixBoisson = document.querySelector(".choixBoisson");
   let prixAchatHT = document.querySelector(".prixAchatHT");
@@ -317,6 +323,10 @@ function transfertValue(index) {
   let prixVenteTTC = document.querySelector(".PrixVenteTTC");
   let quantiteProduits = document.querySelector(".quantiteProduits");
   let margeHT = document.querySelector(".MargeHT");
+  // // selectBoisson = document.querySelector(".test");
+  let selectdegreAlcool = document.querySelector('select[name="degreAlcool"]');
+  let selectInputChaud = document.querySelector('select[name="inputChaud"]');
+  let selectInputFroid = document.querySelector('select[name="inputFroid"]');
 
   // Ajout des valeurs au inputs
   // selectBoisson.value = arrayStock[index].type;
@@ -326,6 +336,9 @@ function transfertValue(index) {
   prixVenteTTC.value = arrayStock[index].prixVenteTTC;
   quantiteProduits.value = arrayStock[index].quantiteProduit;
   margeHT.value = arrayStock[index].margeHT;
+  selectdegreAlcool.value = arrayStock[index].degreeAlcohol;
+  selectInputChaud.value = arrayStock[index].categorieChaud;
+  selectInputFroid.value = arrayStock[index].categorieFroid;
 
   modifButton.addEventListener("click", function () {
     arrayStock[index].nomProduit = choixBoisson.value;
@@ -334,12 +347,22 @@ function transfertValue(index) {
     arrayStock[index].prixVenteTTC = prixVenteTTC.value;
     arrayStock[index].quantiteProduit = quantiteProduits.value;
     arrayStock[index].margeHT = margeHT.value;
-  });
+    arrayStock[index].degreeAlcohol = selectdegreAlcool.value;
+    arrayStock[index].categorieChaud = selectInputChaud.value;
+    arrayStock[index].categorieFroid = selectInputFroid.value;
 
-  // actualisation des tableaux de stock
-  afficheStock();
-  // showStocks(formData);
-  saveTableauStock();
+    if (confirm("Voulez vous modifier la boisson du stock ?")) {
+      // Suppression de la li sur la quelle on a cliqué
+      arrayStock.splice(index, 1);
+      //affiche le tableau modifier
+      afficheStock();
+      //stocker notre tableau modifier dans le localStorage
+      saveTableauStock();
+      document.location.reload();
+    } else {
+      false;
+    }
+  });
 }
 // Fonction bouton suppression total Boisson
 function buttonSuppressionBoisson(index) {
@@ -412,7 +435,7 @@ class Stockalcool extends Stock {
     prixProduitVente,
     prixVenteTTC,
     margeHT,
-    degreeAlcohol,
+    degreeAlcohol
   ) {
     super(
       nomProduit,
