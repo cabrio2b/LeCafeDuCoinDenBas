@@ -18,6 +18,18 @@ button {
 button:hover {
   background-color: rgb(172, 158, 140);
 }
+form {
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  margin: -3px 0px 18px 0px;
+  padding: 10px 0;
+}
 
 /* ===== Les Sections ===== */
 
@@ -125,9 +137,39 @@ button:hover {
   margin-bottom: 8%;
 }
 
+.containerBoisson {
+  gap: 5%;
+}
+.type {
+  gap:3%
+}
+.nomBouton {
+  gap: 3%;
+  justify-content:space-between;
+}
+.nomBoisson{
+  flex-grow: 2;
+}
+.containerFiltre{
+  flex-grow:1;
+}
+.containerFormulaire {
+  flex-grow:2;
+}
+#type, #catAlcool, #catChaud, #catFroid {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid gray;
+  margin: -3px 0px 18px 0px;
+  padding: 10px 0;
+}
+.buttonGestion {
+  padding-top: 26px;
+}
+
 /** ThomDev **/
 
-/** SECTION GESTION DES STOCKS **/
+/** SECTION GESTION DES STOCKS 
 .buttonGestion {
   margin-top: 0.5%;
   margin-left: 1%;
@@ -152,7 +194,7 @@ button:hover {
 .classBoisson,
 .ruptureB {
   padding-top: 10%;
-}
+}**/
 
 /** CHECKBOX RED BLUE POUR RUPTURE STOCK 
 .onoff {

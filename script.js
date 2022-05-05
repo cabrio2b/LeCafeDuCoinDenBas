@@ -54,6 +54,8 @@ formulaire.addEventListener("submit", function (e) {
   let quantityGet = formData.get("quantiteProduits");
   let prixAchatHTGet = formData.get("prixAchatHT");
   let prixVenteHTGet = formData.get("prixVenteHT");
+  let prixVenteTTCGet = formData.get("PrixVenteTTC");
+  let margeHTGet = formData.get("MargeHT");
   let degreeAlcoholGet = formData.get("degreAlcool");
   let choixBoissonChaudeGet = formData.get("inputChaud");
   let choixBoissonFroideGet = formData.get("inputFroid");
@@ -67,6 +69,8 @@ formulaire.addEventListener("submit", function (e) {
       quantityGet,
       prixAchatHTGet,
       prixVenteHTGet,
+      prixVenteTTCGet,
+      margeHTGet,
       degreeAlcoholGet
     );
   } else if (selectBoisson.value == "choixChaud") {
@@ -76,6 +80,8 @@ formulaire.addEventListener("submit", function (e) {
       quantityGet,
       prixAchatHTGet,
       prixVenteHTGet,
+      prixVenteTTCGet,
+      margeHTGet,
       choixBoissonChaudeGet
     );
   } else if (selectBoisson.value == "choixFroide") {
@@ -85,13 +91,16 @@ formulaire.addEventListener("submit", function (e) {
       quantityGet,
       prixAchatHTGet,
       prixVenteHTGet,
+      prixVenteTTCGet,
+      margeHTGet,
       choixBoissonFroideGet
     );
   } else {
     console.log("4");
   }
-  console.log(stockInformations);
 
+  console.log(stockInformations);
+  
   // Envoi de l'objet stock dans le tableau avec la méthode push
   arrayStock.push(stockInformations);
   console.log(arrayStock);
@@ -102,10 +111,10 @@ formulaire.addEventListener("submit", function (e) {
   affichageStockComplet();
 
   // réinitialise le formulaire
-  //formulaire.reset();
   document.location.reload();
 });
 
+new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
 /**
  *
  * Creation des Functions
@@ -138,19 +147,16 @@ function changementType() {
     selectdegreAlcool.setAttribute("required", true);
     optionChaud.style.display = "none";
     optionFroid.style.display = "none";
-    
   } else if (type == "choixChaud") {
     optionChaud.style = "display:block";
     selectInputChaud.setAttribute("required", true);
     optionAlcool.style.display = "none";
     optionFroid.style.display = "none";
-    
   } else {
     optionFroid.style = "display:block";
     selectInputFroid.setAttribute("required", true);
     optionChaud.style.display = "none";
     optionAlcool.style.display = "none";
-    
   }
 }
 // Fonction Affichage Stock Boisson Froide
@@ -194,7 +200,7 @@ function afficheStock() {
       <div class="colonne flex">
         <div class="cellule">${element.quantiteProduit}</div>
         <div class="cellule">
-          <a href="#containerProduit">${element.nomProduit}</a>
+          <a href="#containerProduit" onClick="transfertValue(${index})">${element.nomProduit}</a>
         </div>
         <div class="cellule">${element.categorieChaud}</div>
         <div class="cellule">
@@ -203,7 +209,7 @@ function afficheStock() {
           </button>
         </div>
         <div>
-          <button class="boutonSupprimer"  onClick="buttonMoins(${index})">
+          <button class="boutonSupprimer" onClick="buttonMoins(${index})">
             <i class="fa-regular fa-circle-minus"></i>
           </button>
         </div>
@@ -221,7 +227,7 @@ function afficheStock() {
       <div class="colonne flex">
         <div class="cellule">${element.quantiteProduit}</div>
         <div class="cellule">
-          <a href="#containerProduit">${element.nomProduit}</a>
+          <a href="#containerProduit" onClick="transfertValue(${index})">${element.nomProduit}</a>
         </div>
         <div class="cellule">${element.degreeAlcohol}</div>
         <div class="cellule">
@@ -235,7 +241,7 @@ function afficheStock() {
           </button>
         </div>
         <div>
-          <button class="boutonSupprimerBoisson"  onClick="buttonSuppressionBoisson(${index})">
+          <button class="boutonSupprimerBoisson" onClick="buttonSuppressionBoisson(${index})">
             <i class="fa-regular fa-circle-minus"></i> Supprimer
           </button>
         </div>
@@ -285,6 +291,56 @@ function affichageStockComplet() {
   afficheStockAlerteCommander();
   afficheStockAlerteRupture();
 }
+// script dans le form pour calcul marge ht et tva
+function CalculerMontantTTC() {
+  // rappel only number
+  if (isNaN(formulaire.prixVenteHT.value) == true) {
+    alert("Merci de saisir un montant correct. Calcul impossible.");
+    formulaire.prixVenteHT.value = "";
+    
+  } else if (test) {
+    // calcul marge HT
+    formulaire.MargeHT.value =
+    formulaire.prixVenteHT.value / formulaire.prixAchatHT.value;
+
+    // calcul tva
+    formulaire.PrixVenteTTC.value = formulaire.prixVenteHT.value * 1.2;
+  } else {
+    false;
+  }
+}
+// Fonction pour modifier une boisson
+function transfertValue(index) {
+  let choixBoisson = document.querySelector(".choixBoisson");
+  let prixAchatHT = document.querySelector(".prixAchatHT");
+  let prixVenteHT = document.querySelector(".prixVenteHT");
+  let prixVenteTTC = document.querySelector(".PrixVenteTTC");
+  let quantiteProduits = document.querySelector(".quantiteProduits");
+  let margeHT = document.querySelector(".MargeHT");
+
+  // Ajout des valeurs au inputs
+  // selectBoisson.value = arrayStock[index].type;
+  choixBoisson.value = arrayStock[index].nomProduit;
+  prixAchatHT.value = arrayStock[index].prixProduitAchat;
+  prixVenteHT.value = arrayStock[index].prixProduitVente;
+  prixVenteTTC.value = arrayStock[index].prixVenteTTC;
+  quantiteProduits.value = arrayStock[index].quantiteProduit;
+  margeHT.value = arrayStock[index].margeHT;
+
+  modifButton.addEventListener("click", function () {
+    arrayStock[index].nomProduit = choixBoisson.value;
+    arrayStock[index].prixProduitAchat = prixAchatHT.value;
+    arrayStock[index].prixProduitVente = prixVenteHT.value;
+    arrayStock[index].prixVenteTTC = prixVenteTTC.value;
+    arrayStock[index].quantiteProduit = quantiteProduits.value;
+    arrayStock[index].margeHT = margeHT.value;
+  });
+
+  // actualisation des tableaux de stock
+  afficheStock();
+  // showStocks(formData);
+  saveTableauStock();
+}
 // Fonction bouton suppression total Boisson
 function buttonSuppressionBoisson(index) {
   //Action de supprimer la boisson du stock
@@ -332,11 +388,20 @@ function buttonMoins(index) {
  *
  */
 class Stock {
-  constructor(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente) {
+  constructor(
+    nomProduit,
+    quantiteProduit,
+    prixProduitAchat,
+    prixProduitVente,
+    prixVenteTTC,
+    margeHT
+  ) {
     this.nomProduit = nomProduit;
     this.quantiteProduit = quantiteProduit;
     this.prixProduitAchat = prixProduitAchat;
     this.prixProduitVente = prixProduitVente;
+    this.prixVenteTTC = prixVenteTTC;
+    this.margeHT = margeHT;
   }
 }
 class Stockalcool extends Stock {
@@ -345,9 +410,18 @@ class Stockalcool extends Stock {
     quantiteProduit,
     prixProduitAchat,
     prixProduitVente,
-    degreeAlcohol
+    prixVenteTTC,
+    margeHT,
+    degreeAlcohol,
   ) {
-    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+    super(
+      nomProduit,
+      quantiteProduit,
+      prixProduitAchat,
+      prixProduitVente,
+      prixVenteTTC,
+      margeHT
+    );
     this.degreeAlcohol = degreeAlcohol;
     this.type = "categorieAlcool";
   }
@@ -358,9 +432,18 @@ class StockChaud extends Stock {
     quantiteProduit,
     prixProduitAchat,
     prixProduitVente,
+    prixVenteTTC,
+    margeHT,
     categorieChaud
   ) {
-    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+    super(
+      nomProduit,
+      quantiteProduit,
+      prixProduitAchat,
+      prixProduitVente,
+      prixVenteTTC,
+      margeHT
+    );
     this.categorieChaud = categorieChaud;
     this.type = "categorieChaud";
   }
@@ -371,9 +454,18 @@ class StockFroid extends Stock {
     quantiteProduit,
     prixProduitAchat,
     prixProduitVente,
+    prixVenteTTC,
+    margeHT,
     categorieFroid
   ) {
-    super(nomProduit, quantiteProduit, prixProduitAchat, prixProduitVente);
+    super(
+      nomProduit,
+      quantiteProduit,
+      prixProduitAchat,
+      prixProduitVente,
+      prixVenteTTC,
+      margeHT
+    );
     this.categorieFroid = categorieFroid;
     this.type = "categorieFroid";
   }

@@ -118,137 +118,76 @@
       </div>
     </section>
 
-    <!-- Container Pour Afficher Les 3 Bouttons
-        <div class="les3Bouttons">
-          <button class="ajouterProduits" type="submit">Nouveau Produit</button>
-          <button class="modifierProduits">Modifier</button>
-          <button class="supprimerProduits">Suppression</button>
-        </div> -->
-
-    <!-- Formulaire qui apparait quand on click sur Nouveaux Produits
-        <form id="form">
-          <div class="formulaire">
-            <select class="alcoolOuPas" name="select">
-              <option value="avec">Boissons avec alcool</option>
-              <option value="sans">Boissons sans alcool</option>
-              <option value="chaudes">Boissons chaudes</option>
-            </select>
-
-            <input type="text" name="name" placeholder="Nom du produit" />
-
-            <input type="text" name="quantity" placeholder="Quantités" />
-
-            <input
-              type="text"
-              name="buyingPrice"
-              placeholder="Prix d'achat HT"
-            />
-
-            <input
-              type="text"
-              name="sellingPrice"
-              placeholder="Prix de vente HT"
-            />
-
-            <input
-              class="inputAlcoolDegree"
-              type="text"
-              name="degreeAlcohol"
-              placeholder="Degré d'alcool"
-            />
-
-            <button type="submit">Ajouter au stock</button>
-            <button class="xmark" type="button">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-        </form> -->
-
-    <!-- afficher les données du formulaire -->
-    <!-- 
-        <table>
-          <tr id="head">
-            <thead>
-              <th>| Produits |</th>
-              <th>Quantités |</th>
-              <th>Prix HT |</th>
-              <th>Prix de Vente HT |</th>
-              <th>Degré d'alcool |</th>
-              <th>Marge HT |</th>
-              <th>Prix de vente TTC |</th>
-            </thead>
-
-            <tbody id="data"></tbody>
-          </tr>
-        </table> -->
-
     <!-- herite de thomDev -->
     <!-- Container fiche produit -->
     <section id="containerProduit">
       <h2 class="sousTitre">Gestion Boissons</h2>
-      <div class="containerBoisson">
-        
 
-        <!-- choix select type boisson-->
-        <form id="form">
-          <!-- button -->
-        <div class="buttonGestion">
-          <button type="submit" class="addButton">Ajouter</button>
-          <button type="submit" class="modifButton">Modifier</button>
-     <!-- <button type="" class="supprButton">Supprimer</button> -->
-        </div>
+      <div class="containerBoisson flex">
+        <div class="containerFiltre">
           <div class="typeBoisson">
-            <label>Selectionner une boisson :</label>
             <input
-              class=""
+              class="SelectionBoisson"
               type="text"
               name="SelectionBoisson"
-              placeholder="Nom de la Boisson"
+              placeholder="Recherche par Boisson"
             />
           </div>
+        </div>
 
-          <!-- select catégorie de boisson -->
-          <div class="selectBoisson">
-            <label>Type de Boisson</label>
-            <select name="type" id="type" class="test" onchange="changementType();" required >
-              <option value="">Choisir une option</option>
-              <option value="choixAlcool">Boisson Alcoolisées</option>
-              <option value="choixChaud">Boisson Chaude</option>
-              <option value="choixFroide">Boisson Froide</option>
-            </select>
-          </div>
-
-          <!-- formulaire produit -->
-          <div class="formBoisson">
-            <div class="GestionUn">
-              <div class="classBoisson">
-                <label>Boisson :</label>
+        <div class="containerFormulaire">
+          <form id="form">
+            <div class="nomBouton flex">
+              <!-- Nom de la boisson -->
+              <div class="nomBoisson">
+                <label></label>
                 <input
-                  class=""
+                  class="choixBoisson"
                   type="text"
                   name="choixBoisson"
                   placeholder="Nom de la Boisson"
                   required
                 />
               </div>
-
-              <div class="classBoisson">
-                <label>Prix d'achat HT:</label>
+              <!-- input Quantité -->
+              <div class="quantiteBoisson">
                 <input
-                  class=""
+                  class="quantiteProduits"
                   type="text"
-                  name="prixAchatHT"
-                  placeholder="Prix d'achat HT"
-                  onKeyUp="CalculerMontantTTC()"
+                  name="quantiteProduits"
+                  placeholder="Quantité en stock"
+                  required
                 />
               </div>
+              <!-- button Ajouter/Modifier -->
+              <div class="buttonGestion">
+                <button type="submit" class="addButton">Ajouter</button>
+                <button type="submit" class="modifButton">Modifier</button>
+              </div>
+            </div>
 
-              <div class="classBoisson">
+            <div class="type flex">
+              <!-- select catégorie de boisson -->
+              <div class="selectBoisson">
+                <select
+                  name="type"
+                  id="type"
+                  class="test"
+                  onchange="changementType();"
+                  required
+                >
+                  <option value="">Choisir un Type</option>
+                  <option value="choixAlcool">Boisson Alcoolisées</option>
+                  <option value="choixChaud">Boisson Chaude</option>
+                  <option value="choixFroide">Boisson Froide</option>
+                </select>
+              </div>
+
+              <div class="selectBoisson">
                 <!-- INPUT NONE BOISSON ALCOOL  -->
                 <div id="alcool" style="display: none">
-                  <label>Catégorie d'Alcool:</label>
-                  <select name="degreAlcool" class="degreAlcool">
-                    <option value="">Choisir une option</option>
+                  <select id="catAlcool" name="degreAlcool" class="degreAlcool">
+                    <option value="">Cat. boisson Alcoolisée:</option>
                     <option value="fort">Alcool Fort</option>
                     <option value="aperitif">Apéritif</option>
                     <option value="cocktail">Cocktail</option>
@@ -256,9 +195,8 @@
                 </div>
                 <!-- INPUT NONE BOISSON CHAUDE -->
                 <div id="chaud" style="display: none">
-                  <label>Boisson chaude :</label>
-                  <select name="inputChaud" class="inputChaud">
-                    <option value="">Choisir une option</option>
+                  <select id="catChaud" name="inputChaud" class="inputChaud">
+                    <option value="">Cat. boisson chaude :</option>
                     <option value="café">Café</option>
                     <option value="thé">Thé</option>
                     <option value="chocolat">Chocolat</option>
@@ -267,9 +205,8 @@
 
                 <!-- INPUT NONE BOISSON FROIDE -->
                 <div id="froid" style="display: none">
-                  <label>Boisson froide :</label>
-                  <select name="inputFroid" class="inputFroid">
-                    <option value="">Choisir une option</option>
+                  <select id="catFroid" name="inputFroid" class="inputFroid">
+                    <option value="">Cat. Boisson fraiche :</option>
                     <option value="soda">Soda</option>
                     <option value="eauGazeuse">Eau Gazeuse</option>
                     <option value="sirop">Sirop</option>
@@ -277,89 +214,61 @@
                 </div>
               </div>
             </div>
-            <div class="GestionDeux">
-              <div class="classBoisson">
-                <label>Prix de vente HT:</label>
-                <input
-                  class=""
-                  type="text"
-                  name="prixVenteHT"
-                  placeholder="Prix de vente HT"
-                  onKeyUp="CalculerMontantTTC()"
-                />
-              </div>
 
+            <div class="tarifQrcode flex">
+              <div class="tarif">
                 <div class="classBoisson">
-                  <label>Prix de vente TTC:</label>
+                  <label>Prix d'achat HT</label>
                   <input
-                    class=""
+                    class="prixAchatHT"
+                    type="text"
+                    name="prixAchatHT"
+                    placeholder="Prix d'achat HT"
+                    onKeyUp="CalculerMontantTTC()"
+                  />
+                </div>
+                <div class="classBoisson">
+                  <label>Prix de vente HT</label>
+                  <input
+                    class="prixVenteHT"
+                    type="text"
+                    name="prixVenteHT"
+                    placeholder="Prix de vente HT"
+                    onKeyUp="CalculerMontantTTC()"
+                  />
+                </div>
+                <div class="classBoisson">
+                  <label>Prix de vente TTC</label>
+                  <input
+                    class="PrixVenteTTC"
                     type="text"
                     name="PrixVenteTTC"
                     placeholder="Prix de vente TTC "
                   />
                 </div>
-              </div>
-
-              <div class="GestionTrois">
-                <div class="classBoisson">
-                  <label>Quantité :</label>
-                  <input
-                    class=""
-                    type="text"
-                    name="quantiteProduits"
-                    placeholder="Quantité de produits"
-                    required
-                  />
-                </div>
 
                 <div class="classBoisson">
-                  <label>Coefficient Marge HT :</label>
+                  <label>Coef. de marge HT</label>
                   <input
-                    class=""
+                    class="MargeHT"
                     type="text"
                     name="MargeHT"
                     placeholder="Coef Marge HT"
                   />
                 </div>
-                <!-- checkbox yes no 
-                <div class="ruptureB">
-                  <label>Rupture de stock :</label>
-                  <p class="onoff">
-                    <input type="checkbox" value="1" id="checkboxID" />
-                    <label for="checkboxID"></label>
-                  </p>
-                </div>-->
+              </div>
+              <div class="Qrcode">
+                <div id="qrcode"></div>
               </div>
             </div>
-          </div>
-          
-          <script>
-            // script dans le form pour calcul marge ht et tva
-            function CalculerMontantTTC() {
-              // rappel only number
-              if (isNaN(formulaire.prixVenteHT.value) == true) {
-                alert("Merci de saisir un montant correct. Calcul impossible.");
-                formulaire.prixVenteHT.value = "";
-                
-              } else if (test) {
-                // calcul marge HT
-                formulaire.MargeHT.value =
-                formulaire.prixVenteHT.value / formulaire.prixAchatHT.value;
+          </form>
+        </div>
 
-                // calcul tva
-                formulaire.PrixVenteTTC.value = formulaire.prixVenteHT.value * 1.2;
-              } else {
-                false;
-              }
-            }
-          </script>
-        </form>
+        <!-- choix select type boisson-->
       </div>
     </section>
-  
-    <!-- Container Footer-->
-    <footer>
 
-    </footer>
+    <!-- Container Footer-->
+    <footer></footer>
   </body>
 </html>
