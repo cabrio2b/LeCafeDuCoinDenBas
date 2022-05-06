@@ -101,7 +101,7 @@ input {
 .cellule:nth-child(3) {
   flex: 1;
 }
-.cellule:nth-child(1){
+.cellule:nth-child(1) {
   width: 50px;
 }
 .cellule:nth-child(4),
@@ -122,12 +122,11 @@ input {
 }
 .boissonRupture {
   justify-content: space-between;
-  flex-wrap:wrap;
-  gap: 5px 0
+  flex-wrap: wrap;
+  gap: 5px 0;
 }
-.boissonRupture li{
+.boissonRupture li {
   flex: 1 0 60%;
-  
 }
 .alerteTexte {
   color: #f32727;
@@ -141,22 +140,25 @@ input {
   gap: 5%;
 }
 .type {
-  gap:3%
+  gap: 3%;
 }
 .nomBouton {
   gap: 3%;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-.nomBoisson{
+.nomBoisson {
   flex-grow: 2;
 }
-.containerFiltre{
-  flex-grow:1;
+.containerFiltre {
+  flex-grow: 1;
 }
 .containerFormulaire {
-  flex-grow:2;
+  flex-grow: 2;
 }
-#type, #catAlcool, #catChaud, #catFroid {
+#type,
+#catAlcool,
+#catChaud,
+#catFroid {
   width: 100%;
   border: none;
   border-bottom: 1px solid gray;
@@ -165,6 +167,14 @@ input {
 }
 .buttonGestion {
   padding-top: 12px;
+}
+.inputFiltre {
+  justify-content: space-between;
+}
+.filtreButton {
+  margin-top: 3%;
+  margin-bottom: 6%;
+  width: 80px;
 }
 
 /** ThomDev **/
